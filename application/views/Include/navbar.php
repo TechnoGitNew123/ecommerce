@@ -79,6 +79,13 @@
                 <p>User</p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/customer_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Customer</p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/manufacturer_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
