@@ -35,25 +35,23 @@
                 <tr>
                   <th class="wt_75">Sr. No.</th>
                   <th>Manufacturer Name</th>
-                  <th>Other Info</th>
+                  <th class="wt_250">Other Info</th>
                   <th class="wt_75">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($manufacturer_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td><?php echo $list->manufacturer_name ?></td>
+                    <td><?php echo $list->manufacturer_info ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-4"> <i class="fa fa-trash"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_manufacturer/<?php echo $list->manufacturer_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_manufacturer/<?php echo $list->manufacturer_id; ?>" onclick="return confirm('Delete this Manufacturer');" class="ml-2 text-danger"> <i class="fa fa-trash"></i> </a>
                     </td>
-                  <?php } ?> -->
+                  <?php } ?>
                   </tr>
                 </tbody>
               </table>

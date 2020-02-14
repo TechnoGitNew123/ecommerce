@@ -26,35 +26,31 @@
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
-            <!-- general form elements -->
-            <!-- <div class="card"> -->
-            <!-- /.card-header -->
             <div class="card-body p-0">
               <table id="example1" class="table table-bordered tbl_list">
                 <thead>
                 <tr>
-                  <th class="wt_50">Sr. No.</th>
+                  <th class="wt_75">Sr. No.</th>
                   <th>Category Name</th>
-                  <th>Added/ Modified Date</th>
-                  <th>Status</th>
-                  <th>Action</th>
+                  <th class="wt_200">Added/ Modified Date</th>
+                  <th class="wt_75">Status</th>
+                  <th class="wt_75">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($category_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td><?php echo $list->category_name ?></td>
+                    <td><?php echo $list->category_date ?></td>
+                    <td><?php if($list->category_status == 1){ echo 'Active'; } else{ echo 'Inactive'; } ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-4"> <i class="fa fa-trash"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/edit_category/<?php echo $list->category_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>User/delete_category/<?php echo $list->category_id; ?>" onclick="return confirm('Delete this Category');" class="ml-2 text-danger"> <i class="fa fa-trash"></i> </a>
                     </td>
-                  <?php } ?> -->
+                  <?php } ?>
                   </tr>
                 </tbody>
               </table>
