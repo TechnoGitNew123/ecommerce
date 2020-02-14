@@ -221,6 +221,21 @@ class User extends CI_Controller{
     header('location:'.base_url().'User/user_list');
   }
 
+  /***********************     customer Information      ******************************/
+
+    public function customer_list(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+        $this->load->view('User/customer_list');
+        $this->load->view('Include/footer');
+  }
+    public function customer(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+     $this->load->view('User/customer');
+     $this->load->view('Include/footer');
+    }
+
 /***********************     manufacturer Information      ******************************/
 
   public function manufacturer_list(){
