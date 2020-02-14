@@ -436,6 +436,19 @@ class User extends CI_Controller{
     header('location:'.base_url().'User/tags_list');
   }
 
+  public function manufacturer_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/manufacturer_list');
+      $this->load->view('Include/footer');
+}
+  public function manufacturer(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+   $this->load->view('User/manufacturer');
+   $this->load->view('Include/footer');
+  }
+
 /**************************************************************************************/
 /*******                           Manage Forms                               *********/
 /**************************************************************************************/

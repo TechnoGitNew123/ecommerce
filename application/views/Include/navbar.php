@@ -80,6 +80,12 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/manufacturer_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Manufacturer</p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="<?php echo base_url(); ?>User/item_group_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Item Group</p>
