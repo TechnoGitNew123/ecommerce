@@ -30,9 +30,9 @@ class User extends CI_Controller{
         header('location:'.base_url().'User');
       } else{
         // echo 'null not';
-        $this->session->set_userdata('out_user_id', $login[0]['user_id']);
-        $this->session->set_userdata('out_company_id', $login[0]['company_id']);
-        $this->session->set_userdata('out_roll_id', $login[0]['roll_id']);
+        $this->session->set_userdata('eco_user_id', $login[0]['user_id']);
+        $this->session->set_userdata('eco_company_id', $login[0]['company_id']);
+        $this->session->set_userdata('eco_roll_id', $login[0]['roll_id']);
         header('location:'.base_url().'User/dashboard');
       }
     }
@@ -40,10 +40,10 @@ class User extends CI_Controller{
 
 /**************************      Dashboard      ********************************/
   public function dashboard(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
     $this->load->view('Include/head');
     $this->load->view('Include/navbar');
     $this->load->view('User/dashboard');
@@ -54,12 +54,12 @@ class User extends CI_Controller{
 
   // Company List...
   public function company_information_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
 
-    $data['company_list'] = $this->User_Model->get_list($out_company_id,'company_id','ASC','company');
+    $data['company_list'] = $this->User_Model->get_list($eco_company_id,'company_id','ASC','company');
     $this->load->view('Include/head', $data);
     $this->load->view('Include/navbar', $data);
     $this->load->view('User/company_information_list', $data);
@@ -68,10 +68,10 @@ class User extends CI_Controller{
 
   // Edit Company...
   public function edit_company($company_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
 
     $this->form_validation->set_rules('company_name', 'company_name', 'trim|required');
     $this->form_validation->set_rules('company_address', 'company_address', 'trim|required');
@@ -136,19 +136,19 @@ class User extends CI_Controller{
 
   // Add New User....
   public function add_user(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('user_name', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $save_data = array(
-        'company_id' => $out_company_id,
+        'company_id' => $eco_company_id,
         'user_name' => $this->input->post('user_name'),
         'user_mobile' => $this->input->post('user_mobile'),
         'user_city' => $this->input->post('user_city'),
         'user_password' => $this->input->post('user_password'),
-        'user_addedby' => $out_user_id,
+        'user_addedby' => $eco_user_id,
       );
       $this->User_Model->save_data('user', $save_data);
       $this->session->set_flashdata('save_success','success');
@@ -162,11 +162,11 @@ class User extends CI_Controller{
 
   // User List....
   public function user_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['user_list'] = $this->User_Model->user_list($out_company_id);
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+    $data['user_list'] = $this->User_Model->user_list($eco_company_id);
     $this->load->view('Include/head',$data);
     $this->load->view('Include/navbar',$data);
     $this->load->view('User/user_list',$data);
@@ -175,10 +175,10 @@ class User extends CI_Controller{
 
   // Edit User....
   public function edit_user($user_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
     $this->form_validation->set_rules('user_name', 'First Name', 'trim|required');
     if ($this->form_validation->run() != FALSE) {
       $update_data = array(
@@ -187,7 +187,7 @@ class User extends CI_Controller{
         'user_email' => $this->input->post('user_email'),
         'user_city' => $this->input->post('user_city'),
         'user_password' => $this->input->post('user_password'),
-        'user_addedby' => $out_user_id,
+        'user_addedby' => $eco_user_id,
       );
       $this->User_Model->update_info('user_id', $user_id, 'user', $update_data);
       $this->session->set_flashdata('update_success','success');
@@ -212,229 +212,16 @@ class User extends CI_Controller{
 
   // Delete User....
   public function delete_user($user_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('user_id', $user_id, 'user');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'User/user_list');
   }
 
-/***********************     Item Account Group Information      ******************************/
-
-  // Item Account Group List...
-  public function item_group_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['item_group_list'] = $this->User_Model->get_list($out_company_id,'item_group_id','ASC','item_group');
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/item_group_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  // Add Item Account Group...
-  public function item_group(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('item_group_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $save_data['item_group_name'] = $this->input->post('item_group_name');
-      $save_data['company_id'] = $out_company_id;
-      $save_data['item_group_addedby'] = $out_user_id;
-      $this->User_Model->save_data('item_group', $save_data);
-      $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'User/item_group_list');
-    }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/item_group');
-    $this->load->view('Include/footer');
-  }
-
-  // Edit Item Account Group...
-  public function edit_item_group($item_group_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('item_group_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $update_data['item_group_name'] = $this->input->post('item_group_name');
-      $this->User_Model->update_info('item_group_id', $item_group_id, 'item_group', $update_data);
-      $this->session->set_flashdata('update_success','success');
-      header('location:'.base_url().'User/item_group_list');
-    }
-    $item_group_info = $this->User_Model->get_info_arr('item_group_id',$item_group_id,'item_group');
-    if(!$item_group_info){ header('location:'.base_url().'User/item_group_list'); }
-    $data['update'] = 'update';
-    $data['item_group_name'] = $item_group_info[0]['item_group_name'];
-
-    $this->load->view('Include/head', $data);
-    $this->load->view('Include/navbar', $data);
-    $this->load->view('User/item_group', $data);
-    $this->load->view('Include/footer', $data);
-  }
-
-  // Delete User....
-  public function delete_item_group($item_group_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->User_Model->delete_info('item_group_id', $item_group_id, 'item_group');
-    $this->session->set_flashdata('delete_success','success');
-    header('location:'.base_url().'User/item_group_list');
-  }
-
-/*****************************   Item Account Information   *****************************/
-
-  public function item_account_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['item_account_list'] = $this->User_Model->get_list($out_company_id,'item_account_id','ASC','item_account');
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/item_account_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  public function item_account(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('item_account_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $save_data['item_group_id'] = $this->input->post('item_group_id');
-      $save_data['item_account_name'] = $this->input->post('item_account_name');
-      $save_data['company_id'] = $out_company_id;
-      $save_data['item_account_addedby'] = $out_user_id;
-      $this->User_Model->save_data('item_account', $save_data);
-      $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'User/item_account_list');
-    }
-    $data['item_group_list'] = $this->User_Model->get_list($out_company_id,'item_group_id','ASC','item_group');
-    $this->load->view('Include/head', $data);
-    $this->load->view('Include/navbar', $data);
-    $this->load->view('User/item_account', $data);
-    $this->load->view('Include/footer', $data);
-  }
-
-  // Edit Item Account...
-  public function edit_item_account($item_account_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('item_account_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $update_data['item_group_id'] = $this->input->post('item_group_id');
-      $update_data['item_account_name'] = $this->input->post('item_account_name');
-      $this->User_Model->update_info('item_account_id', $item_account_id, 'item_account', $update_data);
-      $this->session->set_flashdata('update_success','success');
-      header('location:'.base_url().'User/item_account_list');
-    }
-    $item_account_info = $this->User_Model->get_info_arr('item_account_id',$item_account_id,'item_account');
-    if(!$item_account_info){ header('location:'.base_url().'User/item_account_list'); }
-    $data['update'] = 'update';
-    $data['item_group_id'] = $item_account_info[0]['item_group_id'];
-    $data['item_account_name'] = $item_account_info[0]['item_account_name'];
-    $data['item_group_list'] = $this->User_Model->get_list($out_company_id,'item_group_id','ASC','item_group');
-    $this->load->view('Include/head', $data);
-    $this->load->view('Include/navbar', $data);
-    $this->load->view('User/item_account', $data);
-    $this->load->view('Include/footer', $data);
-  }
-
-  // Delete Item Account....
-  public function delete_item_account($item_account_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->User_Model->delete_info('item_account_id', $item_account_id, 'item_account');
-    $this->session->set_flashdata('delete_success','success');
-    header('location:'.base_url().'User/item_account_list');
-  }
-
-/*******************************  Tags Information  ****************************/
-
-  // Tags List...
-  public function tags_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['tags_list'] = $this->User_Model->get_list($out_company_id,'tags_id','ASC','tags');
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/tags_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  //Add Tags
-  public function tags(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('tags_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $save_data['tags_name'] = $this->input->post('tags_name');
-      $save_data['company_id'] = $out_company_id;
-      $save_data['tags_addedby'] = $out_user_id;
-      $this->User_Model->save_data('tags', $save_data);
-      $this->session->set_flashdata('save_success','success');
-      header('location:'.base_url().'User/tags_list');
-    }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/tags');
-    $this->load->view('Include/footer');
-  }
-
-  // Edit Tags...
-  public function edit_tags($tags_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->form_validation->set_rules('tags_name', 'Name', 'trim|required');
-    if ($this->form_validation->run() != FALSE) {
-      $update_data['tags_name'] = $this->input->post('tags_name');
-      $this->User_Model->update_info('tags_id', $tags_id, 'tags', $update_data);
-      $this->session->set_flashdata('update_success','success');
-      header('location:'.base_url().'User/tags_list');
-    }
-    $tags_info = $this->User_Model->get_info_arr('tags_id',$tags_id,'tags');
-    if(!$tags_info){ header('location:'.base_url().'User/tags_list'); }
-    $data['update'] = 'update';
-    $data['tags_name'] = $tags_info[0]['tags_name'];
-
-    $this->load->view('Include/head', $data);
-    $this->load->view('Include/navbar', $data);
-    $this->load->view('User/tags', $data);
-    $this->load->view('Include/footer', $data);
-  }
-
-  // Delete Tags....
-  public function delete_tags($tags_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->User_Model->delete_info('tags_id', $tags_id, 'tags');
-    $this->session->set_flashdata('delete_success','success');
-    header('location:'.base_url().'User/tags_list');
-  }
+/***********************     manufacturer Information      ******************************/
 
   public function manufacturer_list(){
       $this->load->view('Include/head');
@@ -449,6 +236,7 @@ class User extends CI_Controller{
    $this->load->view('Include/footer');
   }
 
+/***********************     category Information      ******************************/
   public function category_list(){
       $this->load->view('Include/head');
       $this->load->view('Include/navbar');
@@ -461,6 +249,8 @@ class User extends CI_Controller{
    $this->load->view('User/category');
    $this->load->view('Include/footer');
   }
+
+/***********************     Product Information      ******************************/
 
   public function product_list(){
       $this->load->view('Include/head');
@@ -475,6 +265,8 @@ class User extends CI_Controller{
    $this->load->view('Include/footer');
   }
 
+/***********************     Product Attr Information      ******************************/
+
   public function product_attri_list(){
       $this->load->view('Include/head');
       $this->load->view('Include/navbar');
@@ -487,6 +279,8 @@ class User extends CI_Controller{
    $this->load->view('User/product_attri');
    $this->load->view('Include/footer');
   }
+
+/***********************     Inventory Information      ******************************/
 
   public function inventory_list(){
       $this->load->view('Include/head');
@@ -501,124 +295,6 @@ class User extends CI_Controller{
    $this->load->view('Include/footer');
   }
 
-/**************************************************************************************/
-/*******                           Manage Forms                               *********/
-/**************************************************************************************/
-
-/***************************      Customer Information     *****************************/
-
-  public function customer_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['user_list'] = $this->User_Model->user_list($out_company_id);
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/customer_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  public function customer(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/customer');
-    $this->load->view('Include/footer');
-  }
-
-/**********************      Suppliers Information      *****************************/
-
-  // Suppliers List...
-  public function supplier_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['supplier_list'] = $this->User_Model->user_list($out_company_id);
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/supplier_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  //Add Supplier
-  public function supplier(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/supplier');
-    $this->load->view('Include/footer');
-  }
-
-/**********************     Item Information      **********************/
-
-  // Items List...
-  public function items_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['items_list'] = $this->User_Model->user_list($out_company_id);
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/items_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  //Add Item
-  public function items(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/items');
-    $this->load->view('Include/footer');
-  }
-
-/*******************************  Stock Information  ****************************/
-
-  // Stock List...
-  public function stock_list(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $data['stock_list'] = $this->User_Model->user_list($out_company_id);
-    $this->load->view('Include/head',$data);
-    $this->load->view('Include/navbar',$data);
-    $this->load->view('User/stock_list',$data);
-    $this->load->view('Include/footer',$data);
-  }
-
-  //Add Stock
-  public function stock(){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
-    $this->load->view('Include/head');
-    $this->load->view('Include/navbar');
-    $this->load->view('User/stock');
-    $this->load->view('Include/footer');
-  }
-
-
-
-
-
-
-
-
-
 /*******************************  Check Duplication  ****************************/
   public function check_duplication(){
     $column_name = $this->input->post('column_name');
@@ -628,7 +304,6 @@ class User extends CI_Controller{
     $cnt = $this->User_Model->check_dupli_num($company_id,$column_val,$column_name,$table_name);
     echo $cnt;
   }
-
 
 }
 ?>

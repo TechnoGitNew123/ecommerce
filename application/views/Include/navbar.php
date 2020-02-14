@@ -85,61 +85,6 @@
                 <p>Manufacturer</p>
               </a>
             </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/item_group_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Item Group</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/item_account_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Item Account</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/tags_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Tags</p>
-              </a>
-            </li>
-
-          </ul>
-        </li>
-
-        <li class="nav-item has-treeview">
-          <a href="#" class="nav-link head">
-            <i class="nav-icon fas fa-chart-pie"></i>
-            <p>
-              Manage
-              <i class="right fas fa-angle-left"></i>
-            </p>
-          </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/customer_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Customers</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/supplier_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Suppliers</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/items_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Items</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/stock_list" class="nav-link">
-                <i class="far fa-circle nav-icon"></i>
-                <p>Stock</p>
-              </a>
-            </li>
           </ul>
         </li>
 

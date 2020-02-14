@@ -29,7 +29,7 @@ class Admin extends CI_Controller{
       }
       else{
         foreach ($login as $login){
-          $this->session->set_userdata('out_admin_id', $login['admin_id']);
+          $this->session->set_userdata('eco_admin_id', $login['admin_id']);
         }
         header('location:'.base_url().'Admin/dashboard');
       }
@@ -37,20 +37,20 @@ class Admin extends CI_Controller{
   }
 
   public function dashboard(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $this->load->view('Admin/dashboard');
   }
 
   public function company_information(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $this->load->view('Admin/company_information');
   }
 
   public function company_information_list(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $data['company_list'] = $this->Admin_Model->get_company_list();
     $this->load->view('Admin/company_information_list',$data);
   }
@@ -94,8 +94,8 @@ class Admin extends CI_Controller{
   }
 
   public function edit_company($company_id){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $company_info = $this->Admin_Model->get_info('company_id', $company_id, 'company');
     if($company_info){
       foreach($company_info as $info){
@@ -123,8 +123,8 @@ class Admin extends CI_Controller{
   }
 
   public function update_company(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $company_id = $this->input->post('company_id');
     $data = array(
       'company_name' => $this->input->post('company_name'),
@@ -149,8 +149,8 @@ class Admin extends CI_Controller{
   }
 
   public function delete_company(){
-    $out_admin_id = $this->session->userdata('out_admin_id');
-    if($out_admin_id == ''){ header('location:'.base_url().'Admin'); }
+    $eco_admin_id = $this->session->userdata('eco_admin_id');
+    if($eco_admin_id == ''){ header('location:'.base_url().'Admin'); }
     $company_id = $this->input->post('company_id');
     $this->Admin_Model->delete_info('company_id', $company_id, 'law_company');
     header('location:'.base_url().'Admin/company_information_list');
