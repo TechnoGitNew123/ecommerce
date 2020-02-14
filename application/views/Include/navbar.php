@@ -147,6 +147,50 @@
           <a href="#" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
+              Products
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/category_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Category
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/product_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Products
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/product_attri_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Products Attributes
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>User/inventory_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Inventory
+                </p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link head">
+            <i class="nav-icon fas fa-chart-pie"></i>
+            <p>
               Transaction
               <i class="right fas fa-angle-left"></i>
             </p>
