@@ -449,6 +449,58 @@ class User extends CI_Controller{
    $this->load->view('Include/footer');
   }
 
+  public function category_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/category_list');
+      $this->load->view('Include/footer');
+}
+  public function category(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+   $this->load->view('User/category');
+   $this->load->view('Include/footer');
+  }
+
+  public function product_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/product_list');
+      $this->load->view('Include/footer');
+}
+  public function product(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+   $this->load->view('User/product');
+   $this->load->view('Include/footer');
+  }
+
+  public function product_attri_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/product_attri_list');
+      $this->load->view('Include/footer');
+}
+  public function product_attri(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+   $this->load->view('User/product_attri');
+   $this->load->view('Include/footer');
+  }
+
+  public function inventory_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/inventory_list');
+      $this->load->view('Include/footer');
+}
+  public function inventory(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+   $this->load->view('User/inventory');
+   $this->load->view('Include/footer');
+  }
+
 /**************************************************************************************/
 /*******                           Manage Forms                               *********/
 /**************************************************************************************/
