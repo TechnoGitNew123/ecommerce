@@ -33,10 +33,10 @@
               <table id="example1" class="table table-bordered tbl_list">
                 <thead>
                 <tr>
-                  <th class="wt_50">Sr. No.</th>
+                  <th class="wt_75">Sr. No.</th>
                   <th>Manufacturer Name</th>
                   <th>Other Info</th>
-                  <th>Action</th>
+                  <th class="wt_75">Action</th>
                 </tr>
                 </thead>
                 <tbody>
