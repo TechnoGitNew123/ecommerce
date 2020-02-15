@@ -191,6 +191,24 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Product/purchase_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Purchase Management
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Product/sale_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Sale Management
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
 

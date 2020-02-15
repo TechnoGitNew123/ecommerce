@@ -185,6 +185,38 @@ class Product extends CI_Controller{
         $this->load->view('User/coupon');
         $this->load->view('Include/footer');
       }
+
+      /***********************     Sale Information      ******************************/
+
+        public function sale_list(){
+          $this->load->view('Include/head');
+          $this->load->view('Include/navbar');
+          $this->load->view('User/sale_list');
+          $this->load->view('Include/footer');
+        }
+        public function sale(){
+          $this->load->view('Include/head');
+          $this->load->view('Include/navbar');
+          $this->load->view('User/sale');
+          $this->load->view('Include/footer');
+        }
+
+
+        /***********************     purchase Information      ******************************/
+
+          public function purchase_list(){
+            $this->load->view('Include/head');
+            $this->load->view('Include/navbar');
+            $this->load->view('User/purchase_list');
+            $this->load->view('Include/footer');
+          }
+          public function purchase(){
+            $this->load->view('Include/head');
+            $this->load->view('Include/navbar');
+            $this->load->view('User/purchase');
+            $this->load->view('Include/footer');
+          }
+
   /***********************     Product Attr Information      ******************************/
 
     // Attribute List
