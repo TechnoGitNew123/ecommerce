@@ -40,20 +40,25 @@
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
-                    $i++; ?>
+                  <?php $i = 0;
+                  foreach ($attribute_list as $list) {
+                    $i++;
+                    $attribute_id = $list->attribute_id;
+                    $attribute_val_list = $this->User_Model->get_list_by_id('attribute_id',$attribute_id,'','','attribute_val_id','ASC','attribute_val');
+                  ?>
                   <tr>
-                    <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td class="wt_75"><?php echo $i; ?></td>
+                    <td><?php echo $list->attribute_name; ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-4"> <i class="fa fa-trash"></i> </a>
+                      <?php foreach ($attribute_val_list as $sub_list) {
+                        echo $sub_list->attribute_val_name.', ';
+                      } ?>
                     </td>
-                  <?php } ?> -->
+                    <td class="wt_75">
+                      <a href="<?php echo base_url(); ?>Product/edit_product_attri/<?php echo $list->attribute_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Product/delete_product_attri/<?php echo $list->attribute_id; ?>" onclick="return confirm('Delete this Attribute');" class="ml-2 text-danger"> <i class="fa fa-trash"></i> </a>
+                    </td>
+                  <?php } ?>
                   </tr>
                 </tbody>
               </table>

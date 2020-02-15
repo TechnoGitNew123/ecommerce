@@ -30,21 +30,50 @@
                 <div class="card-body row">
                   <div class="col-md-8 offset-md-2">
                     <div class="row">
-
                       <div class="form-group col-md-12">
                         <label>Name</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
-                      </div>                   
-
+                        <input type="text" class="form-control form-control-sm" name="attribute_name" id="attribute_name" value="<?php if(isset($attribute_name)){ echo $attribute_name; } ?>" placeholder="" required>
+                      </div>
+                      <div class="form-group col-md-12 text-right">
+                        <button type="button" id="add_row" class="btn btn-sm btn-primary">Add Row</button>
+                      </div>
+                      <div class="form-group col-md-12">
+                        <table id="myTable" class="table table-bordered tbl_list">
+                          <thead>
+                          <tr>
+                            <th>Attribute value</th>
+                            <th class="wt_50"></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            <?php if(isset($attribute_val_list)){ $i=0; foreach ($attribute_val_list as $list) { ?>
+                              <input type="hidden" name="input[<?php echo $i; ?>][attribute_val_id]" value="<?php echo  $list->attribute_val_id; ?>">
+                              <tr>
+                                <td>
+                                  <input type="text" class="form-control form-control-sm" name="input[<?php echo $i; ?>][attribute_val_name]" value="<?php echo $list->attribute_val_name; ?>" placeholder="" required>
+                                </td>
+                                <td class="wt_50"><?php if($i>0){ ?><a class="rem_row"><i class="fa fa-trash text-danger"></i></a><?php } ?></td>
+                              </tr>
+                            <?php $i++; } } else{ ?>
+                              <tr>
+                                <td>
+                                  <input type="text" class="form-control form-control-sm" name="input[0][attribute_val_name]" value="" placeholder="" required>
+                                </td>
+                                <td class="wt_50"></td>
+                              </tr>
+                            <?php } ?>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
-                    <div class="custom-control custom-checkbox ml-2">
+                    <!-- <div class="custom-control custom-checkbox ml-2">
                       <input class="custom-control-input" type="checkbox" name="supplier_status" id="supplier_status" value="1" checked>
                       <label for="supplier_status" class="custom-control-label">Active</label>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="col-md-6 text-right">
                     <?php if(isset($update)){ ?>
@@ -57,11 +86,7 @@
                 </div>
               </form>
             </div>
-
           </div>
-          <!--/.col (left) -->
-          <!-- right column -->
-          <!--/.col (right) -->
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -70,46 +95,30 @@
   <script src="<?php echo base_url(); ?>assets/plugins/sweetalert2/sweetalert2.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/plugins/toastr/toastr.min.js"></script>
 
-<script type="text/javascript">
-// Check Mobile Duplication..
-  var supplier_mobile1 = $('#supplier_mobile').val();
-  $('#supplier_mobile').on('change',function(){
-    var supplier_mobile = $(this).val();
-    $.ajax({
-      url:'<?php echo base_url(); ?>User/check_duplication',
-      type: 'POST',
-      data: {"column_name":"supplier_mobile",
-             "column_val":supplier_mobile,
-             "table_name":"user"},
-      context: this,
-      success: function(result){
-        if(result > 0){
-          $('#supplier_mobile').val(supplier_mobile1);
-          toastr.error(supplier_mobile+' Mobile No Exist.');
-        }
-      }
-    });
-  });
+  <script type="text/javascript">
+    // Add Row...
+    <?php if(isset($update)){ ?>
+    var i = <?php echo $i-1; ?>
+    <?php } else { ?>
+    var i = 0;
+    <?php } ?>
 
-// Check Email Duplication..
-  var supplier_email1 = $('#mobile').val();
-  $('#supplier_email').on('change',function(){
-    var supplier_email = $(this).val();
-    $.ajax({
-      url:'<?php echo base_url(); ?>User/check_duplication',
-      type: 'POST',
-      data: {"column_name":"supplier_email",
-             "column_val":supplier_email,
-             "table_name":"user"},
-      context: this,
-      success: function(result){
-        if(result > 0){
-          $('#supplier_email').val(supplier_email1);
-          toastr.error(supplier_email+' Email Id Exist.');
-        }
-      }
+    $('#add_row').click(function(){
+      i++;
+      var row = ''+
+      '<tr>'+
+        '<td class="">'+
+          '<input type="text" class="form-control form-control-sm" name="input['+i+'][attribute_val_name]" value="" placeholder="" required>'+
+        '</td>'+
+        '<td class="wt_50"><a class="rem_row"><i class="fa fa-trash text-danger"></i></a></td>'+
+      '</tr>';
+      $('#myTable').append(row);
     });
-  });
-</script>
+
+    $('#myTable').on('click', '.rem_row', function () {
+      $(this).closest('tr').remove();
+    });
+
+  </script>
 </body>
 </html>

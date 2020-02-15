@@ -34,8 +34,9 @@
                         <label>Main Category</label>
                         <select class="form-control select2" name="main_category_id" id="main_category_id" data-placeholder="Select Main Category">
                           <option value="">Select Main Category</option>
+                          <option value="-1">Leave as Parent</option>
                           <?php if(isset($main_category_list)){ foreach ($main_category_list as $list) { ?>
-                          <option value="<?php echo $list->main_category_id; ?>" <?php if(isset($main_category_id) && $main_category_id == $list->main_category_id){ echo 'selected'; } ?>><?php echo $list->main_category_name; ?></option>
+                          <option value="<?php echo $list->category_id; ?>" <?php if(isset($category_id) && $category_id == $list->category_id){ echo 'selected'; } ?>><?php echo $list->category_name; ?></option>
                           <?php } } ?>
                         </select>
                       </div>
