@@ -36,17 +36,15 @@
                       </div>
                       <div class="form-group col-md-12">
                         <label>Tax Rate</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
+                        <input type="number" min="0" max="100" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
                       </div>
-
                       <div class="form-group col-md-12">
                         <label>Description</label>
                         <textarea name="name" class="form-control" rows="3" cols="95"></textarea>
-                        </div>
-
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">

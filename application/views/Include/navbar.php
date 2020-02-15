@@ -31,7 +31,7 @@
   <a href="#" class="brand-link">
     <img src="dist/img/AdminLTELogo.png" alt="" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <!-- <span class="brand-text font-weight-light"><?php echo $company_info[0]['company_name']; ?></span> -->
+    <span class="brand-text font-weight-light"><?php echo $company_info[0]['company_name']; ?></span>
   </a>
   <!-- Sidebar -->
   <div class="sidebar">
@@ -41,7 +41,7 @@
         <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
       </div>
       <div class="info">
-        <!-- <a href="#" class="d-block"><?php echo $user_info[0]['user_name']; ?></a> -->
+        <a href="#" class="d-block"><?php echo $user_info[0]['user_name']; ?></a>
       </div>
     </div>
     <!-- Sidebar Menu -->
