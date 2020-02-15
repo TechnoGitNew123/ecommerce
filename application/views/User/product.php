@@ -28,27 +28,82 @@
               <!-- form start -->
               <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
                 <div class="card-body row">
-                  <div class="col-md-8 offset-md-2">
+                  <div class="col-md-12 ">
                     <div class="row">
-                      <div class="form-group col-md-12 select_sm">
+                      <div class="form-group col-md-6  ">
                         <label>Product Type</label>
-                        <select class="form-control select2" name="tag_id" id="tag_id" data-placeholder="Select Tags">
+                        <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Select Tags">
+                          <option value="">Select Tags</option>
+                          <option >1</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-6 select_sm">
+                        <label>Manufacturer</label>
+                        <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Select Tags">
                           <option value="">Select Tags</option>
                           <option >1</option>
                         </select>
                       </div>
 
                       <div class="form-group col-md-12 select_sm">
-                        <label>Manufacturer</label>
-                        <select class="form-control select2" name="tag_id" id="tag_id" data-placeholder="Select Tags">
-                          <option value="">Select Tags</option>
+                        <label>Category</label>
+                        <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Category">
+                          <option value="">Category</option>
                           <option >1</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-12">
-                        <label>Product Name</label>
+
+                      <div class="form-group col-md-6 select_sm">
+                        <label>Is Feature</label>
+                        <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Is Feature">
+                          <option value="">No</option>
+                          <option >yes</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-6 select_sm">
+                        <label>Status</label>
+                        <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Status">
+                          <option value="">Status</option>
+                          <option >Active</option>
+                        </select>
+                      </div>
+
+
+                      <div class="form-group col-md-6">
+                        <label>Product Price </label>
                         <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
                       </div>
+
+                      <div class="form-group col-md-6 select_sm ">
+                        <label>Tax Slab</label>
+                        <select class="form-control select2" name="tag_id" id="tag_id" data-placeholder="Tax Slab">
+                          <option value="">Tax Slab</option>
+                          <option >Active</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label>Min Order Limit</label>
+                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label>Max Order Limit</label>
+                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label>Product Weight</label>
+                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label>Product Model</label>
+                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                      </div>
+
                       <div class="form-group col-md-6">
                           <label>Image</label>
                         <input type="file" name="package_img" id="package_img" class="form-control" id="exampleInputFile">
@@ -56,6 +111,97 @@
 
                 </div>
               </div>
+              <hr>
+              <div class="col-md-6">
+                <div class="row">
+                <div class="form-group col-md-12">
+                  <label>Flash Sale</label>
+                  <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Flash Sale">
+                    <option value="">Flash Sale</option>
+                    <option >Active</option>
+                  </select>
+                </div>
+
+                  <div class="form-group col-md-12">
+                    <label>Flash Sale Price</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label>Flash Sale Start Date*</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label>time</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                    <label>Flash Sale End Date*</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6">
+                      <label>time</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6 select_sm">
+                    <label>Status</label>
+                    <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Status">
+                      <option value="">Status</option>
+                      <option >Active</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="form-group col-md-12 select_sm">
+                    <label>Special</label>
+                    <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Special">
+                      <option value="">Special</option>
+                      <option >Active</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-12">
+                    <label>Special Price*</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-12">
+                    <label>Expiry Date*</label>
+                    <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                  </div>
+
+                  <div class="form-group col-md-6 select_sm">
+                    <label>Status</label>
+                    <select class="form-control select2 select_sm" name="tag_id" id="tag_id" data-placeholder="Status">
+                      <option value="">Status</option>
+                      <option >Active</option>
+                    </select>
+                  </div>
+
+
+                </div>
+              </div>
+              <hr>
+              <div class="col-md-8 offset-md-2">
+                <div class="form-group col-md-12">
+                  <label>Product Name</label>
+                  <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                </div>
+
+
+              <div class="col-md-12">
+                  <label>Description</label>
+                  <textarea class="textarea" name="blog_details" placeholder="Place some text here"
+                          style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"> <?php if(isset($blog_details)){ echo $blog_details; } ?> </textarea>
+                          </div>
+
+                  </div>
             </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
