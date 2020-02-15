@@ -1,9 +1,9 @@
 <?php
-  $out_user_id = $this->session->userdata('out_user_id');
-  $out_company_id = $this->session->userdata('out_company_id');
-  $out_roll_id = $this->session->userdata('out_roll_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $out_company_id, 'company');
-  $user_info = $this->User_Model->get_info_arr_fields('user_name','user_id', $out_user_id, 'user');
+  $eco_user_id = $this->session->userdata('eco_user_id');
+  $eco_company_id = $this->session->userdata('eco_company_id');
+  $eco_roll_id = $this->session->userdata('eco_roll_id');
+  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $eco_company_id, 'company');
+  $user_info = $this->User_Model->get_info_arr_fields('user_name','user_id', $eco_user_id, 'user');
 ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
   <!-- Left navbar links -->
@@ -74,20 +74,20 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/user_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Master/user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>User</p>
               </a>
             </li>
 
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/customer_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Master/customer_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Customer</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/manufacturer_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Master/manufacturer_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Manufacturer</p>
               </a>
@@ -105,7 +105,7 @@
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/category_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Product/category_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                  Category
@@ -113,7 +113,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/product_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Product/product_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                  Products
@@ -121,7 +121,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/product_attri_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Product/product_attri_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                  Products Attributes
@@ -129,7 +129,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?php echo base_url(); ?>User/inventory_list" class="nav-link">
+              <a href="<?php echo base_url(); ?>Product/inventory_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
                  Inventory

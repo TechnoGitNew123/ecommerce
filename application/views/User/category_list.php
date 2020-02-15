@@ -15,7 +15,7 @@
             <h4>Category</h4>
           </div>
           <div class="col-sm-6 mt-1 text-right">
-            <a href="<?php echo base_url(); ?>User/category" class="btn btn-sm btn-primary">Add Category</a>
+            <a href="<?php echo base_url(); ?>Product/category" class="btn btn-sm btn-primary">Add Category</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

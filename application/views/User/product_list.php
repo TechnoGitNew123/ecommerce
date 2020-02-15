@@ -15,7 +15,7 @@
             <h4>Product</h4>
           </div>
           <div class="col-sm-6 mt-1 text-right">
-            <a href="<?php echo base_url(); ?>User/product" class="btn btn-sm btn-primary">Add Product</a>
+            <a href="<?php echo base_url(); ?>Product/product" class="btn btn-sm btn-primary">Add Product</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

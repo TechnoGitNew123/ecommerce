@@ -15,7 +15,7 @@
             <h4>Manufacturer</h4>
           </div>
           <div class="col-sm-6 mt-1 text-right">
-            <a href="<?php echo base_url(); ?>User/manufacturer" class="btn btn-sm btn-primary">Add Manufacturer</a>
+            <a href="<?php echo base_url(); ?>Master/manufacturer" class="btn btn-sm btn-primary">Add Manufacturer</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

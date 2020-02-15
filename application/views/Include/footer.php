@@ -1,8 +1,8 @@
 <?php
-  $out_user_id = $this->session->userdata('out_user_id');
-  $out_company_id = $this->session->userdata('out_company_id');
-  $out_roll_id = $this->session->userdata('out_roll_id');
-  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $out_company_id, 'company');
+  $eco_user_id = $this->session->userdata('eco_user_id');
+  $eco_company_id = $this->session->userdata('eco_company_id');
+  $eco_roll_id = $this->session->userdata('eco_roll_id');
+  $company_info = $this->User_Model->get_info_arr_fields('company_name','company_id', $eco_company_id, 'company');
 ?>
 <footer class="main-footer">
   <strong>Copyright &copy;<?php echo date('Y'); ?>-<?php echo date('Y')+1; ?> <a href="<?php echo base_url(); ?>"><?php echo $company_info[0]['company_name']; ?></a>.</strong>
