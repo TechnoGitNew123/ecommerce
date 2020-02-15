@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>TAX SLAB INFORMATION</h4>
+            <h4>CUSTOMER LEVEL INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,9 +23,9 @@
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Tax Slab Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Customer List Information</h3>
               <div class="card-tools">
-                <a href="<?php echo base_url(); ?>Master/tax_slab" class="btn btn-sm btn-block btn-primary">Add Tax Slab</a>
+                <a href="<?php echo base_url(); ?>Master/customer_level" class="btn btn-sm btn-block btn-primary">Add Customer Level</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -34,9 +34,9 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Tax Title</th>
-                  <th>Tax Rate </th>
-                  <th>Added/ Modified Date</th>
+                  <th>Customer Level Name</th>
+                  <th>Customer Level Amount</th>
+                  <th>Status </th>
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>

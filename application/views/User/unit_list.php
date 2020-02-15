@@ -25,7 +25,7 @@
             <div class="card-header">
               <h3 class="card-title"><i class="fa fa-list"></i> List Unit Information</h3>
               <div class="card-tools">
-                <a href="<?php echo base_url(); ?>User/unit" class="btn btn-sm btn-block btn-primary">Add Unit</a>
+                <a href="<?php echo base_url(); ?>Master/unit" class="btn btn-sm btn-block btn-primary">Add Unit</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -36,7 +36,7 @@
                   <th class="wt_50">#</th>
                   <th>Unit Name</th>
                   <th>Status </th>
-                
+
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>

@@ -112,6 +112,98 @@ class Master extends CI_Controller{
       $this->load->view('Include/footer');
     }
 
+    /***********************     franchise Information      ******************************/
+
+    public function franchise_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/franchise_list');
+      $this->load->view('Include/footer');
+    }
+    public function franchise_information(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/franchise_information');
+      $this->load->view('Include/footer');
+    }
+
+    /***********************     tax_slab Information      ******************************/
+
+    public function tax_slab_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/tax_slab_list');
+      $this->load->view('Include/footer');
+    }
+    public function tax_slab(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/tax_slab');
+      $this->load->view('Include/footer');
+    }
+
+    /***********************     Unit Information      ******************************/
+
+    public function unit_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/unit_list');
+      $this->load->view('Include/footer');
+    }
+    public function unit(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/unit');
+      $this->load->view('Include/footer');
+    }
+
+    /***********************     shipping Information      ******************************/
+
+    public function shipping_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/shipping_list');
+      $this->load->view('Include/footer');
+    }
+    public function shipping(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/shipping');
+      $this->load->view('Include/footer');
+    }
+
+    /***********************     customer_level Information      ******************************/
+
+    public function customer_level_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/customer_level_list');
+      $this->load->view('Include/footer');
+    }
+    public function customer_level(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/customer_level');
+      $this->load->view('Include/footer');
+    }
+
+
+    /***********************     membership_scheme Information      ******************************/
+
+    public function membership_scheme_list(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/membership_scheme_list');
+      $this->load->view('Include/footer');
+    }
+    public function membership_scheme(){
+      $this->load->view('Include/head');
+      $this->load->view('Include/navbar');
+      $this->load->view('User/membership_scheme');
+      $this->load->view('Include/footer');
+    }
+
+
   /***********************     manufacturer Information      ******************************/
 
     public function manufacturer_list(){

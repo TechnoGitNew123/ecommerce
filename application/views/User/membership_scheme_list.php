@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 mt-1">
-            <h4>TAX SLAB INFORMATION</h4>
+            <h4>MEMBERSHIP SCHEME INFORMATION</h4>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,9 +23,9 @@
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Tax Slab Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Membership Information</h3>
               <div class="card-tools">
-                <a href="<?php echo base_url(); ?>Master/tax_slab" class="btn btn-sm btn-block btn-primary">Add Tax Slab</a>
+                <a href="<?php echo base_url(); ?>Master/membership_scheme" class="btn btn-sm btn-block btn-primary">Add Membership</a>
               </div>
             </div>
             <!-- /.card-header -->
@@ -34,9 +34,10 @@
                 <thead>
                 <tr>
                   <th class="wt_50">#</th>
-                  <th>Tax Title</th>
-                  <th>Tax Rate </th>
-                  <th>Added/ Modified Date</th>
+                  <th>Membership Scheme Name</th>
+                  <th>Membership Scheme Amount</th>
+                  <th>Membership Scheme Validity</th>
+                  <th>Status </th>
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
