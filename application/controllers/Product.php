@@ -170,6 +170,21 @@ class Product extends CI_Controller{
       $this->load->view('Include/footer');
     }
 
+
+    /***********************     Coupon Information      ******************************/
+
+      public function coupon_list(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+        $this->load->view('User/coupon_list');
+        $this->load->view('Include/footer');
+      }
+      public function coupon(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+        $this->load->view('User/coupon');
+        $this->load->view('Include/footer');
+      }
   /***********************     Product Attr Information      ******************************/
 
     // Attribute List
