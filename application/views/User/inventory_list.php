@@ -15,7 +15,7 @@
             <h4>Inventory</h4>
           </div>
           <div class="col-sm-6 mt-1 text-right">
-            <a href="<?php echo base_url(); ?>User/inventory" class="btn btn-sm btn-primary">Add Inventory</a>
+            <a href="<?php echo base_url(); ?>Product/inventory" class="btn btn-sm btn-primary">Add Inventory</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

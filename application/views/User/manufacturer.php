@@ -26,32 +26,36 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
+              <form class="m-0 input_form" id="form_action" role="form" action="" method="post" enctype="multipart/form-data">
                 <div class="card-body row">
                   <div class="col-md-8 offset-md-2">
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label>Name</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                        <input type="text" class="form-control form-control-sm" name="manufacturer_name" id="manufacturer_name" value="<?php if(isset($manufacturer_name)){ echo $manufacturer_name; } ?>" placeholder="" required>
                       </div>
                       <div class="form-group col-md-12">
                         <label>Other Info</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
+                        <input type="text" class="form-control form-control-sm" name="manufacturer_info" id="manufacturer_info" value="<?php if(isset($manufacturer_info)){ echo $manufacturer_info; } ?>" placeholder="" required>
                       </div>
-
                       <div class="form-group col-md-6">
-                          <label>Image</label>
-                        <input type="file" name="package_img" id="package_img" class="form-control" id="exampleInputFile">
+                        <label>Image</label>
+                        <input type="file" class="form-control form-control-sm" name="manufacturer_img" id="manufacturer_img" class="form-control" id="exampleInputFile">
                       </div>
-
+                      <?php if(isset($update)){ ?>
+                        <div class="form-group col-md-6">
+                          <img width="50%" src="<?php echo base_url(); ?>assets/images/manufacturer/<?php echo $manufacturer_img; ?>" alt="Manufacturer Image">
+                        </div>
+                        <input type="hidden" name="old_img" value="<?php echo $manufacturer_img; ?>">
+                      <?php } ?>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">
-                      <input class="custom-control-input" type="checkbox" name="supplier_status" id="supplier_status" value="1" checked>
-                      <label for="supplier_status" class="custom-control-label">Active</label>
+                      <input class="custom-control-input" type="checkbox" name="manufacturer_status" id="manufacturer_status" value="1" <?php if(isset($manufacturer_status) && $manufacturer_status == 1){ echo 'checked'; } elseif (!isset($manufacturer_status)){ echo 'checked'; } ?>>
+                      <label for="manufacturer_status" class="custom-control-label">Active</label>
                     </div>
                   </div>
                   <div class="col-md-6 text-right">
@@ -80,40 +84,20 @@
 
 <script type="text/javascript">
 // Check Mobile Duplication..
-  var supplier_mobile1 = $('#supplier_mobile').val();
-  $('#supplier_mobile').on('change',function(){
-    var supplier_mobile = $(this).val();
+  var manufacturer_name1 = $('#manufacturer_name').val();
+  $('#manufacturer_name').on('change',function(){
+    var manufacturer_name = $(this).val();
     $.ajax({
       url:'<?php echo base_url(); ?>User/check_duplication',
       type: 'POST',
-      data: {"column_name":"supplier_mobile",
-             "column_val":supplier_mobile,
-             "table_name":"user"},
+      data: {"column_name":"manufacturer_name",
+             "column_val":manufacturer_name,
+             "table_name":"manufacturer"},
       context: this,
       success: function(result){
         if(result > 0){
-          $('#supplier_mobile').val(supplier_mobile1);
-          toastr.error(supplier_mobile+' Mobile No Exist.');
-        }
-      }
-    });
-  });
-
-// Check Email Duplication..
-  var supplier_email1 = $('#mobile').val();
-  $('#supplier_email').on('change',function(){
-    var supplier_email = $(this).val();
-    $.ajax({
-      url:'<?php echo base_url(); ?>User/check_duplication',
-      type: 'POST',
-      data: {"column_name":"supplier_email",
-             "column_val":supplier_email,
-             "table_name":"user"},
-      context: this,
-      success: function(result){
-        if(result > 0){
-          $('#supplier_email').val(supplier_email1);
-          toastr.error(supplier_email+' Email Id Exist.');
+          $('#manufacturer_name').val(manufacturer_name1);
+          toastr.error(manufacturer_name+' Exist.');
         }
       }
     });
