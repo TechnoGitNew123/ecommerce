@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-12 text-center mt-2">
-            <h1>Customer</h1>
+            <h1>Unit</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -22,57 +22,22 @@
             <!-- general form elements -->
             <div class="card card-default">
               <div class="card-header">
-                <h3 class="card-title">Add Customer</h3>
+                <h3 class="card-title">Add Unit</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <form class="m-0 input_form" id="form_action" role="form" action="" method="post">
                 <div class="card-body row">
-                  <div class="col-md-6  offset-md-3">
+                  <div class="col-md-8 offset-md-2">
                     <div class="row">
                       <div class="form-group col-md-12">
-                        <label>First Name</label>
+                        <label>Unit Name </label>
                         <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
                       </div>
-                      <div class="form-group col-md-12">
-                        <label>Last Name</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label>Date Of Birth</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_display_name" id="supplier_display_name" value="<?php if(isset($supplier_display_name)){ echo $supplier_display_name; } ?>" placeholder="" required>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label>Mobile</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_gstin" id="supplier_gstin" value="<?php if(isset($supplier_gstin)){ echo $supplier_gstin; } ?>" placeholder="" required>
-                      </div>
-                      <div class="form-group col-md-12">
-                        <label>Email</label>
-                        <input type="email" class="form-control form-control-sm" name="supplier_pan" id="supplier_pan" value="<?php if(isset($supplier_pan)){ echo $supplier_pan; } ?>" placeholder="" required>
-                      </div>
-
-                      <div class="form-group col-md-12">
-                        <label>Password</label>
-                        <input type="number" class="form-control form-control-sm" name="supplier_tds" id="supplier_tds" value="<?php if(isset($supplier_tds)){ echo $supplier_tds; } ?>" placeholder="Password" required>
-                      </div>
-                      <div class="form-group col-md-2 mb-0">
-                        <label for="">Gender : </label>
-                      </div>
-                      <div class="form-group col-md-2 mb-0">
-                        <div class="form-check">
-                          <input class="form-check-input" value="Male" type="radio" checked="" name="member_gender">
-                          Male
-                        </div>
-                      </div>
-                      <div class="form-group col-md-2 mb-0">
-                        <div class="form-check">
-                          <input class="form-check-input" value="Female" type="radio" name="member_gender">
-                          Female
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
                 </div>
+              </div>
+            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">
@@ -86,7 +51,7 @@
                     <?php } else{ ?>
                       <button id="btn_save" type="submit" class="btn btn-success px-4">Save</button>
                     <?php } ?>
-                    <a href="<?php echo base_url() ?>User/supplier_list" class="btn btn-default ml-4">Cancel</a>
+                    <a href="<?php echo base_url() ?>User/manufacturer_list" class="btn btn-default ml-4">Cancel</a>
                   </div>
                 </div>
               </form>

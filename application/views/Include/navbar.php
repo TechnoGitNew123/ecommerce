@@ -31,7 +31,7 @@
   <a href="#" class="brand-link">
     <img src="dist/img/AdminLTELogo.png" alt="" class="brand-image img-circle elevation-3"
          style="opacity: .8">
-    <span class="brand-text font-weight-light"><?php echo $company_info[0]['company_name']; ?></span>
+    <!-- <span class="brand-text font-weight-light"><?php echo $company_info[0]['company_name']; ?></span> -->
   </a>
   <!-- Sidebar -->
   <div class="sidebar">
@@ -41,7 +41,7 @@
         <!-- <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image"> -->
       </div>
       <div class="info">
-        <a href="#" class="d-block"><?php echo $user_info[0]['user_name']; ?></a>
+        <!-- <a href="#" class="d-block"><?php echo $user_info[0]['user_name']; ?></a> -->
       </div>
     </div>
     <!-- Sidebar Menu -->
@@ -73,10 +73,47 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/franchise_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                Franchise Information
+                </p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>Master/user_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>User</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/tax_slab_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tax Slab</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/unit_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Unit</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/shipping_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Shipping Methode</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/customer_level_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Customer level Info.</p>
               </a>
             </li>
 
@@ -86,12 +123,22 @@
                 <p>Customer</p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Master/membership_scheme_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Membership Scheme Management</p>
+              </a>
+            </li>
+
             <li class="nav-item">
               <a href="<?php echo base_url(); ?>Master/manufacturer_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Manufacturer</p>
               </a>
             </li>
+
+
           </ul>
         </li>
 
