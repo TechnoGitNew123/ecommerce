@@ -236,6 +236,37 @@ class User extends CI_Controller{
      $this->load->view('Include/footer');
     }
 
+    /***********************    Tax Slab  Information      ******************************/
+
+      public function tax_slab_list(){
+          $this->load->view('Include/head');
+          $this->load->view('Include/navbar');
+          $this->load->view('User/tax_slab_list');
+          $this->load->view('Include/footer');
+    }
+      public function tax_slab(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+       $this->load->view('User/tax_slab');
+       $this->load->view('Include/footer');
+      }
+
+      /***********************    Tax Slab  Information      ******************************/
+
+        public function unit_list(){
+            $this->load->view('Include/head');
+            $this->load->view('Include/navbar');
+            $this->load->view('User/unit_list');
+            $this->load->view('Include/footer');
+      }
+        public function unit(){
+          $this->load->view('Include/head');
+          $this->load->view('Include/navbar');
+         $this->load->view('User/unit');
+         $this->load->view('Include/footer');
+        }
+
+
 /***********************     manufacturer Information      ******************************/
 
   public function manufacturer_list(){
