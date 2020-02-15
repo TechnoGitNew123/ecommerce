@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2020 at 05:45 AM
+-- Generation Time: Feb 15, 2020 at 08:09 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -45,6 +45,48 @@ INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attribute`
+--
+
+CREATE TABLE `attribute` (
+  `attribute_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `attribute_name` varchar(250) NOT NULL,
+  `attribute_status` int(11) NOT NULL DEFAULT 1,
+  `attribute_addedby` varchar(50) NOT NULL,
+  `attribute_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attribute`
+--
+
+INSERT INTO `attribute` (`attribute_id`, `company_id`, `attribute_name`, `attribute_status`, `attribute_addedby`, `attribute_date`) VALUES
+(2, 1, 'asdf', 1, '1', '15-02-2020 06:02:01 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `attribute_val`
+--
+
+CREATE TABLE `attribute_val` (
+  `attribute_val_id` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL,
+  `attribute_val_name` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `attribute_val`
+--
+
+INSERT INTO `attribute_val` (`attribute_val_id`, `attribute_id`, `attribute_val_name`) VALUES
+(8, 2, 'aa'),
+(10, 2, 'cc');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `category`
 --
 
@@ -54,18 +96,11 @@ CREATE TABLE `category` (
   `main_category_id` int(11) NOT NULL,
   `category_name` varchar(250) NOT NULL,
   `category_img` varchar(150) NOT NULL,
+  `is_main` int(11) DEFAULT 0,
   `category_status` int(11) NOT NULL DEFAULT 1,
   `category_addedby` varchar(50) NOT NULL,
   `category_date` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`category_id`, `company_id`, `main_category_id`, `category_name`, `category_img`, `category_status`, `category_addedby`, `category_date`) VALUES
-(1, 1, 1, 'dfghgfh', '', 1, '1', '14-02-2020 11:02:02 '),
-(3, 1, 2, 'asdfasdf', 'category_3_1581677854.jpg', 1, '1', '14-02-2020 11:02:06 ');
 
 -- --------------------------------------------------------
 
@@ -369,29 +404,6 @@ INSERT INTO `country` (`country_id`, `sortname`, `country_name`, `phonecode`, `d
 (245, 'ZM', 'Zambia', '260', '2020-01-28 13:08:18'),
 (246, 'ZW', 'Zimbabwe', '263', '2020-01-28 13:08:18'),
 (247, '', 'Gabon', '0', '2020-01-28 13:08:18');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `main_category`
---
-
-CREATE TABLE `main_category` (
-  `main_category_id` int(11) NOT NULL,
-  `company_id` int(11) NOT NULL,
-  `main_category_name` varchar(250) DEFAULT NULL,
-  `main_category_img` varchar(150) DEFAULT NULL,
-  `main_category_status` int(11) NOT NULL DEFAULT 1,
-  `main_category_addedby` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `main_category`
---
-
-INSERT INTO `main_category` (`main_category_id`, `company_id`, `main_category_name`, `main_category_img`, `main_category_status`, `main_category_addedby`) VALUES
-(1, 1, 'AAA', NULL, 1, ''),
-(2, 1, 'BBB', NULL, 1, '');
 
 -- --------------------------------------------------------
 
@@ -2643,6 +2655,22 @@ INSERT INTO `state` (`state_id`, `country_id`, `state_name`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tax`
+--
+
+CREATE TABLE `tax` (
+  `tax_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `tax_title` varchar(250) DEFAULT NULL,
+  `tax_rate` double DEFAULT NULL,
+  `tax_status` int(11) NOT NULL DEFAULT 1,
+  `tax_addedby` varchar(50) DEFAULT NULL,
+  `tax_date` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -2683,6 +2711,18 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
+-- Indexes for table `attribute`
+--
+ALTER TABLE `attribute`
+  ADD PRIMARY KEY (`attribute_id`);
+
+--
+-- Indexes for table `attribute_val`
+--
+ALTER TABLE `attribute_val`
+  ADD PRIMARY KEY (`attribute_val_id`);
+
+--
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
@@ -2699,12 +2739,6 @@ ALTER TABLE `company`
 --
 ALTER TABLE `country`
   ADD PRIMARY KEY (`country_id`);
-
---
--- Indexes for table `main_category`
---
-ALTER TABLE `main_category`
-  ADD PRIMARY KEY (`main_category_id`);
 
 --
 -- Indexes for table `manufacturer`
@@ -2725,6 +2759,12 @@ ALTER TABLE `state`
   ADD PRIMARY KEY (`state_id`);
 
 --
+-- Indexes for table `tax`
+--
+ALTER TABLE `tax`
+  ADD PRIMARY KEY (`tax_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -2741,10 +2781,22 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `attribute`
+--
+ALTER TABLE `attribute`
+  MODIFY `attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `attribute_val`
+--
+ALTER TABLE `attribute_val`
+  MODIFY `attribute_val_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -2757,12 +2809,6 @@ ALTER TABLE `company`
 --
 ALTER TABLE `country`
   MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
-
---
--- AUTO_INCREMENT for table `main_category`
---
-ALTER TABLE `main_category`
-  MODIFY `main_category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `manufacturer`
@@ -2781,6 +2827,12 @@ ALTER TABLE `product`
 --
 ALTER TABLE `state`
   MODIFY `state_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2181;
+
+--
+-- AUTO_INCREMENT for table `tax`
+--
+ALTER TABLE `tax`
+  MODIFY `tax_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
