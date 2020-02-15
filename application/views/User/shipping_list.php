@@ -37,26 +37,28 @@
                   <th>Shipping Name</th>
                   <th>Shipping Price</th>
                   <th>Status </th>
-
                   <th class="wt_50">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($shipping_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td><?php echo $list->shipping_name ?></td>
+                    <td><?php echo $list->shipping_price ?></td>
+                    <td><?php if($list->shipping_status == 1){
+                      echo "<span class='text-success'>Active</span>";
+                    } else{
+                      echo "<span class='text-danger'>Inactive</span>";
+                    } ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/edit_shipping/<?php echo $list->shipping_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/delete_shipping/<?php echo $list->shipping_id; ?>" onclick="return confirm('Delete this Shipping Information');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
-                  </tr> -->
+                  </tr>
 
                 </tbody>
               </table>

@@ -47,8 +47,8 @@
                     <td><?php echo $list->category_date ?></td>
                     <td><?php if($list->category_status == 1){ echo 'Active'; } else{ echo 'Inactive'; } ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_category/<?php echo $list->category_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_category/<?php echo $list->category_id; ?>" onclick="return confirm('Delete this Category');" class="ml-2 text-danger"> <i class="fa fa-trash"></i> </a>
+                      <a href="<?php echo base_url(); ?>Product/edit_category/<?php echo $list->category_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Product/delete_category/<?php echo $list->category_id; ?>" onclick="return confirm('Delete this Category');" class="ml-2 text-danger"> <i class="fa fa-trash"></i> </a>
                     </td>
                   <?php } ?>
                   </tr>

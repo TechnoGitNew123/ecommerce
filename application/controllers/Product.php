@@ -84,9 +84,9 @@ class Product extends CI_Controller{
 
     // Edit Category...
     public function edit_category($category_id){
-      $eco_user_id = $this->session->userdata('out_user_id');
-      $eco_company_id = $this->session->userdata('out_company_id');
-      $eco_roll_id = $this->session->userdata('out_roll_id');
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
       if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->form_validation->set_rules('category_name', 'Name', 'trim|required');
       if ($this->form_validation->run() != FALSE) {
@@ -125,16 +125,16 @@ class Product extends CI_Controller{
          }
 
         $this->session->set_flashdata('update_success','success');
-        header('location:'.base_url().'User/category_list');
+        header('location:'.base_url().'Product/category_list');
       }
       $category_info = $this->User_Model->get_info_arr('category_id',$category_id,'category');
-      if(!$category_info){ header('location:'.base_url().'User/category_list'); }
+      if(!$category_info){ header('location:'.base_url().'Product/category_list'); }
       $data['update'] = 'update';
       $data['category_name'] = $category_info[0]['category_name'];
       $data['main_category_id'] = $category_info[0]['main_category_id'];
       $data['category_status'] = $category_info[0]['category_status'];
       $data['category_img'] = $category_info[0]['category_img'];
-      $data['main_category_list'] = $this->User_Model->get_list($eco_company_id,'main_category_name','ASC','main_category');
+      $data['main_category_list'] = $this->User_Model->get_list_by_id('company_id',$eco_company_id,'is_main',1,'category_name','ASC','category');
 
       $this->load->view('Include/head', $data);
       $this->load->view('Include/navbar', $data);
@@ -144,15 +144,15 @@ class Product extends CI_Controller{
 
     // Delete Category....
     public function delete_category($category_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $category_info = $this->User_Model->get_info_arr_fields('category_img','category_id', $category_id, 'category');
       $this->User_Model->delete_info('category_id', $category_id, 'category');
       if($category_info){ unlink("assets/images/category/".$category_info[0]['category_img']); }
       $this->session->set_flashdata('delete_success','success');
-      header('location:'.base_url().'User/category_list');
+      header('location:'.base_url().'Product/category_list');
     }
 
   /***********************     Product Information      ******************************/
@@ -264,10 +264,10 @@ class Product extends CI_Controller{
 
     // Delete Attributes.....
     public function delete_product_attri($attribute_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('attribute_id', $attribute_id, 'attribute');
       $this->User_Model->delete_info('attribute_id', $attribute_id, 'attribute_val');
       $this->session->set_flashdata('delete_success','success');

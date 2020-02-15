@@ -32,26 +32,24 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label>Shipping Title </label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                        <input type="text" class="form-control form-control-sm" name="shipping_name" id="shipping_name" value="<?php if(isset($shipping_info)){ echo $shipping_info['shipping_name']; } ?>" placeholder="" required>
                       </div>
                       <div class="form-group col-md-12">
                         <label>Shipping Rate</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
+                        <input type="number" class="form-control form-control-sm" name="shipping_price" id="shipping_price" value="<?php if(isset($shipping_info)){ echo $shipping_info['shipping_price']; } ?>" placeholder="" required>
                       </div>
-
                       <div class="form-group col-md-12">
                         <label>Description</label>
-                        <textarea name="name" class="form-control" rows="3" cols="95"></textarea>
-                        </div>
-
+                        <textarea name="shipping_desc" id="shipping_desc" class="form-control" rows="3" cols="95"><?php if(isset($shipping_info)){ echo $shipping_info['shipping_desc']; } ?></textarea>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">
-                      <input class="custom-control-input" type="checkbox" name="supplier_status" id="supplier_status" value="1" checked>
-                      <label for="supplier_status" class="custom-control-label">Active</label>
+                      <input class="custom-control-input" type="checkbox" name="shipping_status" id="shipping_status" value="1" <?php if(isset($shipping_info) && $shipping_info['shipping_status'] == 1){ echo 'checked'; } elseif (!isset($shipping_info)){ echo 'checked'; } ?>>
+                      <label for="shipping_status" class="custom-control-label">Active</label>
                     </div>
                   </div>
                   <div class="col-md-6 text-right">

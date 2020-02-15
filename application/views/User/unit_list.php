@@ -35,28 +35,28 @@
                 <tr>
                   <th class="wt_50">#</th>
                   <th>Unit Name</th>
-                  <th>Status </th>
-
-                  <th class="wt_50">Action</th>
+                  <th class="wt_200">Status </th>
+                  <th class="wt_75">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($unit_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td><?php echo $list->unit_name ?></td>
+                    <td><?php if($list->unit_status == 1){
+                      echo "<span class='text-success'>Active</span>";
+                    } else{
+                      echo "<span class='text-danger'>Inactive</span>";
+                    } ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/edit_unit/<?php echo $list->unit_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/delete_unit/<?php echo $list->unit_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
-                  </tr> -->
-
+                  </tr>
                 </tbody>
               </table>
             </div>

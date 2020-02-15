@@ -32,17 +32,16 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label>Unit Name </label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                        <input type="text" class="form-control form-control-sm" name="unit_name" id="unit_name" value="<?php if(isset($unit_info)){ echo $unit_info['unit_name']; } ?>" placeholder="" required>
                       </div>
-                  
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">
-                      <input class="custom-control-input" type="checkbox" name="supplier_status" id="supplier_status" value="1" checked>
-                      <label for="supplier_status" class="custom-control-label">Active</label>
+                      <input class="custom-control-input" type="checkbox" name="unit_status" id="unit_status" value="1" <?php if(isset($unit_info) && $unit_info['unit_status'] == 1){ echo 'checked'; } elseif (!isset($unit_info)){ echo 'checked'; } ?>>
+                      <label for="unit_status" class="custom-control-label">Active</label>
                     </div>
                   </div>
                   <div class="col-md-6 text-right">

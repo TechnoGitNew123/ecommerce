@@ -32,30 +32,28 @@
                     <div class="row">
                       <div class="form-group col-md-12">
                         <label>Membership Name</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_company" id="supplier_company" value="<?php if(isset($supplier_company)){ echo $supplier_company; } ?>" placeholder="" required>
+                        <input type="text" class="form-control form-control-sm" name="mem_sch_name" id="mem_sch_name" value="<?php if(isset($mem_sch_info)){ echo $mem_sch_info['mem_sch_name']; } ?>" placeholder="" required>
                       </div>
                       <div class="form-group col-md-12">
                         <label>Membership Amount</label>
-                        <input type="text" class="form-control form-control-sm" name="supplier_name" id="supplier_name" value="<?php if(isset($supplier_name)){ echo $supplier_name; } ?>" placeholder="" required>
+                        <input type="number" class="form-control form-control-sm" name="mem_sch_amt" id="mem_sch_amt" value="<?php if(isset($mem_sch_info)){ echo $mem_sch_info['mem_sch_amt']; } ?>" placeholder="" required>
                       </div>
-
                       <div class="form-group col-md-12 select_sm">
                         <label>Membership Validity </label>
-                        <select class="form-control select2" name="tag_id" id="tag_id" data-placeholder="Membership Validity">
+                        <select class="form-control select2" name="mem_sch_valid" id="mem_sch_valid" data-placeholder="Membership Validity">
                           <option value="">Membership Validity</option>
-                          <option >Monthly</option>
-                          <option >Yearly</option>
+                          <option <?php if(isset($mem_sch_info) && $mem_sch_info['mem_sch_valid'] == 'Monthly'){ echo 'selected'; } ?> >Monthly</option>
+                          <option <?php if(isset($mem_sch_info) && $mem_sch_info['mem_sch_valid'] == 'Yearly'){ echo 'selected'; } ?>>Yearly</option>
                         </select>
                       </div>
-
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
                 <div class="card-footer row">
                   <div class="col-md-6">
                     <div class="custom-control custom-checkbox ml-2">
-                      <input class="custom-control-input" type="checkbox" name="supplier_status" id="supplier_status" value="1" checked>
-                      <label for="supplier_status" class="custom-control-label">Active</label>
+                      <input class="custom-control-input" type="checkbox" name="mem_sch_status" id="mem_sch_status" value="1" <?php if(isset($mem_sch_info) && $mem_sch_info['mem_sch_status'] == 1){ echo 'checked'; } elseif (!isset($mem_sch_info)){ echo 'checked'; } ?>>
+                      <label for="mem_sch_status" class="custom-control-label">Active</label>
                     </div>
                   </div>
                   <div class="col-md-6 text-right">
