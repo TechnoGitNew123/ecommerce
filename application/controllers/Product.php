@@ -217,6 +217,24 @@ class Product extends CI_Controller{
             $this->load->view('Include/footer');
           }
 
+
+/***********************     order_status Information      ******************************/
+
+      public function order_status_list(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+        $this->load->view('User/order_status_list');
+        $this->load->view('Include/footer');
+      }
+      public function order_status(){
+        $this->load->view('Include/head');
+        $this->load->view('Include/navbar');
+        $this->load->view('User/order_status');
+        $this->load->view('Include/footer');
+      }
+
+
+
   /***********************     Product Attr Information      ******************************/
 
     // Attribute List

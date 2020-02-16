@@ -39,8 +39,8 @@
                   <div class="form-group col-md-4">
                     <input type="text" class="form-control form-control-sm" name="sale_date" id="date1" data-target="#date1" data-toggle="datetimepicker" value="<?php if(isset($sale_date)){ echo $sale_date; } ?>" placeholder="Sale Bill Date" required>
                   </div>
-                  <div class="form-group col-md-8 offset-md-2">
-                    <select class="form-control select2 select_sm form-control-sm" name="sale_party" id="sale_party" style="width: 100%;" required>
+                  <div class="form-group col-md-8 offset-md-2 select_sm">
+                    <select class="form-control select2  form-control-sm" name="sale_party" id="sale_party" style="width: 100%;" required>
                       <option selected="selected select_sm" value="" >Select Party Name</option>
                       <?php foreach ($party_list as $party_list1) { ?>
                         <option value="<?php echo $party_list1->party_id; ?>"
@@ -55,16 +55,16 @@
                   <!-- <div class="form-group col-md-2">
                   </div> -->
 
-                  <div class="form-group col-md-4 offset-md-2">
-                    <select class="form-control select2 select_sm form-control-sm sale_challan_no" name="sale_challan_no" id="sale_challan_no" required>
+                  <div class="form-group col-md-4 offset-md-2 select_sm">
+                    <select class="form-control select2  form-control-sm sale_challan_no" name="sale_challan_no" id="sale_challan_no" required>
                       <option selected="selected" value="">Select Delivery Challan No. for sale bill</option>
                       <?php if(isset($sale_challan_no) || isset($delivery_no)){ ?>
                         <option selected="selected" value="<?php echo $delivery_id; ?>"><?php echo $delivery_no; ?></option>
                       <?php } ?>
                     </select>
                   </div>
-                  <div class="form-group col-md-4 ">
-                    <select class="form-control select2 select_sm form-control-sm" name="sale_employee" required>
+                  <div class="form-group col-md-4 select_sm">
+                    <select class="form-control select2  form-control-sm" name="sale_employee" required>
                       <option selected="selected" value="">Select Employee</option>
                       <?php foreach ($user_list as $user_list1) { ?>
                         <option value="<?php echo $user_list1->user_id; ?>"
@@ -82,47 +82,48 @@
                 <button type="button" id="add_row" class="btn btn-sm btn-primary mb-3 mr-1" width="150px">Add Row</button>
               </div>
               <div class="" style="overflow-x:auto;">
-                <table id="myTable" class="table table-bordered table-striped tbl_add" style="">
-                  <thead>
-                  <tr>
-                    <th class="sr_no">Sr. No.</th>
-                    <th class="sr_no">bill . No.</th>
-                    <th class="td_w">GST</th>
-                    <th class="td_w">Qty</th>
-                    <th class="td_w">Rate</th>
-                    <th class="td_w">Amount</th>
-                    <th class="td_btn"></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-
-                    <input type="hidden" name="" value="">
-                    <tr>
-                      <td class="sr_no"></td>
-
-
-                      <td class="td_w">
-                        <input type="text" class="form-control form-control-sm " name="" value="" id="" placeholder="Bill no.">
-                      </td>
-
-                      <td class="td_w">
-                        <input type="number" class="form-control form-control-sm gst" name="" value="" id="" placeholder="" required>
-                      </td>
-                      <td class="td_w">
-                        <input type="number" class="form-control form-control-sm qty" name="" value="" id="" placeholder="" required>
-                      </td>
-                      <td class="td_w">
-                        <input type="number" class="form-control form-control-sm rate" name="" value="" id="" placeholder="" required>
-                      </td>
-                      <td class="td_w">
-                        <input type="number" class="form-control form-control-sm amount" name="" value="" id="" placeholder="" readonly >
-                      </td>
-                      <td class="td_btn">
-                         <a><i class="fa fa-trash text-danger"></i></a>
-                        <input type="hidden" name="" class="gst_amount1 gst_amount" value="">
-                      </td>
-                    </tr>
-                </table>
+                <table id="myTable" class="table table-bordered tbl_list">
+                      <thead>
+                      <tr>
+                        <th>Item</th>
+                        <th class="wt_150">Inword Qty</th>
+                        <th>Unit</th>
+                        <th class="wt_100">Unit Price</th>
+                        <th class="wt_100">MRP</th>
+                        <th class="wt_50"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <select class="form-control form-control-sm" name="stock_type_id" id="stock_type_id" data-placeholder="Select Type">
+                              <option value="">Select Type</option>
+                              <option >1</option>
+                              <option >2</option>
+                              <option >3</option>
+                            </select>
+                          </td>
+                          <td class="wt_150">
+                            <input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>
+                          </td>
+                          <td>
+                            <select class="form-control form-control-sm" name="stock_type_id" id="stock_type_id" data-placeholder="Select Type">
+                              <option value="">Select Type</option>
+                              <option >1</option>
+                              <option >2</option>
+                              <option >3</option>
+                            </select>
+                          </td>
+                          <td class="wt_100">
+                            <input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>
+                          </td>
+                          <td class="wt_100">
+                            <input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>
+                          </td>
+                          <td class="wt_50"></td>
+                        </tr>
+                      </tbody>
+                    </table>
               </div>
               <div class="row">
                 <div class="col-md-6">
@@ -204,6 +205,54 @@
       }
     });
   });
+</script>
+
+<script type="text/javascript">
+  // Add Row...
+  <?php if(isset($update)){ ?>
+  var i = <?php echo $i-1; ?>
+  <?php } else { ?>
+  var i = 1;
+  <?php } ?>
+
+  $('#add_row').click(function(){
+    i++;
+    var row = ''+
+    '<tr>'+
+      '<td>'+
+        '<select class="form-control form-control-sm" name="stock_type_id" id="stock_type_id" data-placeholder="Select Type">'+
+          '<option value="">Select Type</option>'+
+          '<option >1</option>'+
+          '<option >2</option>'+
+          '<option >3</option>'+
+        '</select>'+
+      '</td>'+
+      '<td class="wt_150">'+
+        '<input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>'+
+      '</td>'+
+      '<td>'+
+        '<select class="form-control form-control-sm" name="stock_type_id" id="stock_type_id" data-placeholder="Select Type">'+
+          '<option value="">Select Type</option>'+
+          '<option >1</option>'+
+          '<option >2</option>'+
+          '<option >3</option>'+
+        '</select>'+
+      '</td>'+
+      '<td class="wt_100">'+
+        '<input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>'+
+      '</td>'+
+      '<td class="wt_100">'+
+        '<input type="text" class="form-control form-control-sm" name="stock_no" id="stock_no" value="" placeholder="" required>'+
+      '</td>'+
+      '<td class="wt_50"><a class="rem_row"><i class="fa fa-trash text-danger"></i></a></td>'+
+    '</tr>';
+    $('#myTable').append(row);
+  });
+
+  $('#myTable').on('click', '.rem_row', function () {
+    $(this).closest('tr').remove();
+  });
+
 </script>
 </body>
 </html>
