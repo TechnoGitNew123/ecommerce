@@ -191,6 +191,24 @@
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Product/purchase_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Purchase Management
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="<?php echo base_url(); ?>Product/sale_list" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>
+                 Sale Management
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -198,16 +216,16 @@
           <a href="#" class="nav-link head">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
-              Transaction
+              Order Management
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="<?php echo base_url(); ?>Product/order_status_list" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>
-                  Demo Link
+                Order Status Information
                 </p>
               </a>
             </li>
