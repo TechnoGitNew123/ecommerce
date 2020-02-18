@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Product extends CI_Controller{
   public function __construct(){
     parent::__construct();
+    date_default_timezone_set('Asia/Kolkata');
     $this->load->model('User_Model');
     // $this->load->model('Transaction_Model');
   }
@@ -84,9 +85,9 @@ class Product extends CI_Controller{
 
     // Edit Category...
     public function edit_category($category_id){
-      $eco_user_id = $this->session->userdata('out_user_id');
-      $eco_company_id = $this->session->userdata('out_company_id');
-      $eco_roll_id = $this->session->userdata('out_roll_id');
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
       if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->form_validation->set_rules('category_name', 'Name', 'trim|required');
       if ($this->form_validation->run() != FALSE) {
@@ -125,16 +126,16 @@ class Product extends CI_Controller{
          }
 
         $this->session->set_flashdata('update_success','success');
-        header('location:'.base_url().'User/category_list');
+        header('location:'.base_url().'Product/category_list');
       }
       $category_info = $this->User_Model->get_info_arr('category_id',$category_id,'category');
-      if(!$category_info){ header('location:'.base_url().'User/category_list'); }
+      if(!$category_info){ header('location:'.base_url().'Product/category_list'); }
       $data['update'] = 'update';
       $data['category_name'] = $category_info[0]['category_name'];
       $data['main_category_id'] = $category_info[0]['main_category_id'];
       $data['category_status'] = $category_info[0]['category_status'];
       $data['category_img'] = $category_info[0]['category_img'];
-      $data['main_category_list'] = $this->User_Model->get_list($eco_company_id,'main_category_name','ASC','main_category');
+      $data['main_category_list'] = $this->User_Model->get_list_by_id('company_id',$eco_company_id,'is_main',1,'category_name','ASC','category');
 
       $this->load->view('Include/head', $data);
       $this->load->view('Include/navbar', $data);
@@ -144,47 +145,320 @@ class Product extends CI_Controller{
 
     // Delete Category....
     public function delete_category($category_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $category_info = $this->User_Model->get_info_arr_fields('category_img','category_id', $category_id, 'category');
       $this->User_Model->delete_info('category_id', $category_id, 'category');
       if($category_info){ unlink("assets/images/category/".$category_info[0]['category_img']); }
       $this->session->set_flashdata('delete_success','success');
-      header('location:'.base_url().'User/category_list');
+      header('location:'.base_url().'Product/category_list');
     }
 
   /***********************     Product Information      ******************************/
-
+    // Product List...
     public function product_list(){
-      $this->load->view('Include/head');
-      $this->load->view('Include/navbar');
-      $this->load->view('User/product_list');
-      $this->load->view('Include/footer');
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+      $data['product_list'] = $this->User_Model->get_list($eco_company_id,'product_name','ASC','product');
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product_list', $data);
+      $this->load->view('Include/footer', $data);
     }
+
+    // Add Product...
     public function product(){
-      $this->load->view('Include/head');
-      $this->load->view('Include/navbar');
-      $this->load->view('User/product');
-      $this->load->view('Include/footer');
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+      $this->form_validation->set_rules('product_name', 'Name', 'trim|required');
+      if ($this->form_validation->run() != FALSE) {
+        $save_data = $_POST;
+        unset($save_data['files']);
+        $save_data['company_id'] = $eco_company_id;
+        $save_data['product_date'] = date('d-m-Y h:i:s A');
+        $save_data['product_addedby'] = $eco_user_id;
+        $product_id = $this->User_Model->save_data('product', $save_data);
+
+        if(isset($_FILES['product_img']['name'])){
+          $time = time();
+          $image_name = 'product_main_'.$product_id.'_'.$time;
+          $config['upload_path'] = 'assets/images/product/';
+          $config['allowed_types'] = 'png|jpg';
+          $config['file_name'] = $image_name;
+          $filename = $_FILES['product_img']['name'];
+          $ext = pathinfo($filename, PATHINFO_EXTENSION);
+          $this->upload->initialize($config);
+          if ($this->upload->do_upload('product_img')){
+           $up_image = array(
+             'product_img' => $image_name.'.'.$ext,
+           );
+           $this->User_Model->update_info('product_id', $product_id, 'product', $up_image);
+          }
+          else{
+            $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_status',$this->upload->display_errors());
+          }
+        }
+      }
+
+      $data['manufacturer_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'manufacturer_status',1,'','','manufacturer_name','ASC','manufacturer');
+      $data['main_category_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'category_status',1,'is_main',1,'category_name','ASC','category');
+      $data['category_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'category_status',1,'is_main',0,'category_name','ASC','category');
+      $data['tax_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'tax_status',1,'','','tax_title','ASC','tax');
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product', $data);
+      $this->load->view('Include/footer', $data);
+    }
+
+    // Add Product...
+    public function edit_product($product_id){
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+      $this->form_validation->set_rules('product_name', 'Name', 'trim|required');
+      if ($this->form_validation->run() != FALSE) {
+        $update_data = $_POST;
+        unset($update_data['files']);
+        unset($update_data['old_img']);
+        $update_data['product_date'] = date('d-m-Y h:i:s A');
+        $update_data['product_addedby'] = $eco_user_id;
+        $this->User_Model->update_info('product_id', $product_id, 'product', $update_data);
+
+        if(isset($_FILES['product_img']['name'])){
+          $time = time();
+          $image_name = 'product_main_'.$product_id.'_'.$time;
+          $config['upload_path'] = 'assets/images/product/';
+          $config['allowed_types'] = 'gif|jpg|png';
+          $config['file_name'] = $image_name;
+          $filename = $_FILES['product_img']['name'];
+          $ext = pathinfo($filename, PATHINFO_EXTENSION);
+          $this->upload->initialize($config);
+          if ($this->upload->do_upload('product_img')){
+           $up_image = array(
+             'product_img' => $image_name.'.'.$ext,
+           );
+           $old_img = $this->input->post('old_img');
+           if(isset($old_img)){ unlink("assets/images/product/".$old_img); }
+           $this->User_Model->update_info('product_id', $product_id, 'product', $up_image);
+          }
+          else{
+            $error = $this->upload->display_errors();
+            $this->session->set_flashdata('upload_status',$this->upload->display_errors());
+          }
+        }
+        header('location:'.base_url().'Product/product_list');
+      }
+      $product_info = $this->User_Model->get_info_arr('product_id',$product_id,'product');
+      if(!$product_info){ header('location:'.base_url().'Product/product_list'); }
+      $data['update'] = 'update';
+      $data['product_info'] = $product_info[0];
+
+      $data['manufacturer_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'manufacturer_status',1,'','','manufacturer_name','ASC','manufacturer');
+      $data['main_category_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'category_status',1,'is_main',1,'category_name','ASC','category');
+      $data['category_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'category_status',1,'is_main',0,'category_name','ASC','category');
+      $data['tax_list'] = $this->User_Model->get_list_by_id_com($eco_company_id,'tax_status',1,'','','tax_title','ASC','tax');
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product', $data);
+      $this->load->view('Include/footer', $data);
+    }
+
+    // Product Images...
+    public function product_images($product_id){
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+      $this->form_validation->set_rules('product_name', 'Name', 'trim|required');
+      if ($this->form_validation->run() != FALSE) {
+        if(isset($_FILES['product_images_name']['name'])){
+          $this->load->library('upload');
+          $files = $_FILES;
+          $cpt = count($_FILES['product_images_name']['name']);
+          for($i=0; $i<$cpt; $i++){
+            $doc_type = $_POST['doc_type'][$i];
+            $j = $i+1;
+            $time = time();
+            $image_name = 'product_sub_'.$product_id.'_'.$j.'_'.$time;
+              $_FILES['product_images_name']['name']= $files['product_images_name']['name'][$i];
+              $_FILES['product_images_name']['type']= $files['product_images_name']['type'][$i];
+              $_FILES['product_images_name']['tmp_name']= $files['product_images_name']['tmp_name'][$i];
+              $_FILES['product_images_name']['error']= $files['product_images_name']['error'][$i];
+              $_FILES['product_images_name']['size']= $files['product_images_name']['size'][$i];
+              $config['upload_path'] = 'assets/images/product/';
+              $config['allowed_types'] = 'gif|jpg|png';
+              $config['file_name'] = $image_name;
+              $config['overwrite']     = FALSE;
+              $filename = $files['product_images_name']['name'][$i];
+              $ext = pathinfo($filename, PATHINFO_EXTENSION);
+              $this->upload->initialize($config);
+              if($this->upload->do_upload('product_images_name')){
+                $file_data['product_images_name'] = $image_name.'.'.$ext;
+                $file_data['product_id'] = $product_id;
+                $file_data['product_images_addedby'] = $eco_user_id;
+                $file_data['product_images_date'] = date('d-m-Y h:i:s A');
+                $this->User_Model->save_data('product_images', $file_data);
+              }
+              else{
+                $error = $this->upload->display_errors();
+                $this->session->set_flashdata('status',$this->upload->display_errors());
+              }
+            }
+          }
+          header('location:'.base_url().'Product/product_list');
+        }
+
+      $product_info = $this->User_Model->get_info_arr_fields('*','product_id', $product_id, 'product');
+      if(!$product_info){ header('location:'.base_url().'Product/product_list'); }
+      $data['product_info'] = $product_info[0];
+      $data['product_images_list'] = $this->User_Model->get_list_by_id('product_id',$product_id,'','','product_id','ASC','product_images');
+
+      // print_r($data['product_images_list']);
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product_images', $data);
+      $this->load->view('Include/footer', $data);
+    }
+
+    public function delete_product_images(){
+      $product_images_id = $this->input->post('product_images_id');
+      $product_images_name = $this->input->post('product_images_name');
+
+      unlink("assets/images/product/".$product_images_name);
+      $this->User_Model->delete_info('product_images_id', $product_images_id, 'product_images');
+    }
+
+    // Add Attributes to Product...
+    public function product_attribute($product_id){
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+      $this->form_validation->set_rules('attribute_id', 'Name', 'trim|required');
+      if ($this->form_validation->run() != FALSE) {
+        $save_data = array(
+          'company_id' => $eco_company_id,
+          'product_id' => $product_id,
+          'attribute_id' => $this->input->post('attribute_id'),
+          'attribute_val_id' => $this->input->post('attribute_val_id'),
+          'attribute_price_type' => $this->input->post('attribute_price_type'),
+          'attribute_price' => $this->input->post('attribute_price'),
+          'product_attribute_status' => $this->input->post('product_attribute_status'),
+          'product_attribute_addedby' => $eco_user_id,
+          'product_attribute_date' => date('d-m-Y h:i:sA'),
+        );
+        $this->User_Model->save_data('product_attribute', $save_data);
+        $this->session->set_flashdata('save_success','success');
+        header('location:'.base_url().'Product/product_attribute/'.$product_id);
+      }
+
+      $product_info = $this->User_Model->get_info_arr_fields('*','product_id', $product_id, 'product');
+      if(!$product_info){ header('location:'.base_url().'Product/product_list'); }
+      $data['product_info'] = $product_info[0];
+      $data['attribute_list'] = $this->User_Model->get_list_by_id('attribute_status',1,'','','attribute_name','ASC','attribute');
+      $data['product_attribute_list'] = $this->User_Model->get_list_by_id('product_id',$product_id,'','','attribute_id','ASC','product_attribute');
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product_attribute', $data);
+      $this->load->view('Include/footer', $data);
+    }
+
+    // Add Attributes to Product...
+    public function edit_product_attribute(){
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+      $product_attribute_id = $this->uri->segment(4);
+      $product_id = $this->uri->segment(3);
+      $this->form_validation->set_rules('attribute_id', 'Name', 'trim|required');
+      if ($this->form_validation->run() != FALSE) {
+        $update_data = array(
+          'attribute_id' => $this->input->post('attribute_id'),
+          'attribute_val_id' => $this->input->post('attribute_val_id'),
+          'attribute_price_type' => $this->input->post('attribute_price_type'),
+          'attribute_price' => $this->input->post('attribute_price'),
+          'product_attribute_status' => $this->input->post('product_attribute_status'),
+          'product_attribute_addedby' => $eco_user_id,
+          'product_attribute_date' => date('d-m-Y h:i:sA'),
+        );
+        $this->User_Model->update_info('product_attribute_id', $product_attribute_id, 'product_attribute', $update_data);
+        $this->session->set_flashdata('update_success','success');
+        header('location:'.base_url().'Product/product_attribute/'.$product_id);
+      }
+
+      $product_info = $this->User_Model->get_info_arr_fields('*','product_id', $product_id, 'product');
+      if(!$product_info){ header('location:'.base_url().'Product/product_list'); }
+      $data['product_info'] = $product_info[0];
+      $data['attribute_list'] = $this->User_Model->get_list_by_id('attribute_status',1,'','','attribute_name','ASC','attribute');
+      $data['product_attribute_list'] = $this->User_Model->get_list_by_id('product_id',$product_id,'','','attribute_id','ASC','product_attribute');
+
+      $product_attribute_info = $this->User_Model->get_info_arr('product_attribute_id',$product_attribute_id,'product_attribute');
+      if(!$product_attribute_info){ header('location:'.base_url().'Product/product_list'); }
+      $data['update'] = 'update';
+      $data['product_attribute_info'] = $product_attribute_info[0];
+      $attribute_id = $product_attribute_info[0]['attribute_id'];
+      $data['attribute_val_list'] = $this->User_Model->get_list_by_id('attribute_id',$attribute_id,'','','attribute_val_name','ASC','attribute_val');
+      $this->load->view('Include/head', $data);
+      $this->load->view('Include/navbar', $data);
+      $this->load->view('User/product_attribute', $data);
+      $this->load->view('Include/footer', $data);
+    }
+
+    public function delete_product_attribute(){
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+      $product_attribute_id = $this->uri->segment(4);
+      $product_id = $this->uri->segment(3);
+      $this->User_Model->delete_info('product_attribute_id', $product_attribute_id, 'product_attribute');
+      $this->session->set_flashdata('delete_success','success');
+      header('location:'.base_url().'Product/product_attribute/'.$product_id);
+    }
+
+    public function get_attribute_val_by_id(){
+      $attribute_id = $this->input->post('attribute_id');
+      $attribute_val_list = $this->User_Model->get_list_by_id('attribute_id',$attribute_id,'','','attribute_val_name','ASC','attribute_val');
+      echo "<option value='' selected >Select Purchase No.</option>";
+      foreach ($attribute_val_list as $list) {
+        echo "<option value='".$list->attribute_val_id."'> ".$list->attribute_val_name." </option>";
+      }
     }
 
 
-    /***********************     Coupon Information      ******************************/
 
-      public function coupon_list(){
-        $this->load->view('Include/head');
-        $this->load->view('Include/navbar');
-        $this->load->view('User/coupon_list');
-        $this->load->view('Include/footer');
-      }
-      public function coupon(){
-        $this->load->view('Include/head');
-        $this->load->view('Include/navbar');
-        $this->load->view('User/coupon');
-        $this->load->view('Include/footer');
-      }
+/***********************     Coupon Information      ******************************/
+
+  public function coupon_list(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/coupon_list');
+    $this->load->view('Include/footer');
+  }
+  public function coupon(){
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+    $data['product_list'] = $this->User_Model->get_list_by_id('product_status',1,'','','product_name','ASC','product');
+    $this->load->view('Include/head', $data);
+    $this->load->view('Include/navbar', $data);
+    $this->load->view('User/coupon', $data);
+    $this->load->view('Include/footer', $data);
+  }
 
       /***********************     Sale Information      ******************************/
 
@@ -329,10 +603,10 @@ class Product extends CI_Controller{
 
     // Delete Attributes.....
     public function delete_product_attri($attribute_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('attribute_id', $attribute_id, 'attribute');
       $this->User_Model->delete_info('attribute_id', $attribute_id, 'attribute_val');
       $this->session->set_flashdata('delete_success','success');

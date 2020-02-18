@@ -40,6 +40,36 @@ input[type=number] {
     font-size: .875rem;
 }
 
+/* Multi-Select */
+.select_sm .select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 1px solid #ced4da !important;
+    outline: 0;
+}
+
+.select_sm .select2-container--default .select2-selection--multiple .select2-selection__rendered .select2-search.select2-search--inline .select2-search__field {
+    border: 0;
+    margin-top: 3px !important;
+}
+
+.select_sm .select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ced4da !important;
+    border-radius: 4px;
+    cursor: text;
+    font-size: .875rem !important;
+}
+
+.select_sm .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #007bff !important;
+    border-color: #006fe6 !important;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 3px !important;
+    padding: 0 5px;
+}
+
 .div_left{
   border: 1px solid rgba(34,36,38,.15) !important;
   border-right: none !important;

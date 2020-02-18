@@ -23,7 +23,7 @@
             <!-- general form elements -->
             <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><i class="fa fa-list"></i> List Customer List Information</h3>
+              <h3 class="card-title"><i class="fa fa-list"></i> List Customer Level Information</h3>
               <div class="card-tools">
                 <a href="<?php echo base_url(); ?>Master/customer_level" class="btn btn-sm btn-block btn-primary">Add Customer Level</a>
               </div>
@@ -37,25 +37,27 @@
                   <th>Customer Level Name</th>
                   <th>Customer Level Amount</th>
                   <th>Status </th>
-                  <th class="wt_50">Action</th>
+                  <th class="wt_75">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($customer_level_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
+                    <td><?php echo $list->customer_level_name ?></td>
+                    <td><?php echo $list->customer_level_price ?></td>
+                    <td><?php if($list->customer_level_status == 1){
+                      echo "<span class='text-success'>Active</span>";
+                    } else{
+                      echo "<span class='text-danger'>Inactive</span>";
+                    } ?></td>
                     <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/edit_customer_level/<?php echo $list->customer_level_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Master/delete_customer_level/<?php echo $list->customer_level_id; ?>" onclick="return confirm('Delete this Information');" class="ml-2"> <i class="fa fa-trash text-danger"></i> </a>
                     </td>
                   <?php } ?>
-                  </tr> -->
 
                 </tbody>
               </table>
