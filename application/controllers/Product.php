@@ -439,20 +439,26 @@ class Product extends CI_Controller{
 
 
 
-    /***********************     Coupon Information      ******************************/
+/***********************     Coupon Information      ******************************/
 
-      public function coupon_list(){
-        $this->load->view('Include/head');
-        $this->load->view('Include/navbar');
-        $this->load->view('User/coupon_list');
-        $this->load->view('Include/footer');
-      }
-      public function coupon(){
-        $this->load->view('Include/head');
-        $this->load->view('Include/navbar');
-        $this->load->view('User/coupon');
-        $this->load->view('Include/footer');
-      }
+  public function coupon_list(){
+    $this->load->view('Include/head');
+    $this->load->view('Include/navbar');
+    $this->load->view('User/coupon_list');
+    $this->load->view('Include/footer');
+  }
+  public function coupon(){
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+    $data['product_list'] = $this->User_Model->get_list_by_id('product_status',1,'','','product_name','ASC','product');
+    $this->load->view('Include/head', $data);
+    $this->load->view('Include/navbar', $data);
+    $this->load->view('User/coupon', $data);
+    $this->load->view('Include/footer', $data);
+  }
 
       /***********************     Sale Information      ******************************/
 

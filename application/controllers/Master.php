@@ -187,10 +187,10 @@ class Master extends CI_Controller{
 
     // Delete Customer....
     public function delete_customer($customer_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('customer_id', $customer_id, 'customer');
       $this->session->set_flashdata('delete_success','success');
       header('location:'.base_url().'Master/customer_list');
@@ -290,10 +290,10 @@ class Master extends CI_Controller{
 
   // Delete Tags....
   public function delete_tax_slab($tax_id){
-    $out_user_id = $this->session->userdata('out_user_id');
-    $out_company_id = $this->session->userdata('out_company_id');
-    $out_roll_id = $this->session->userdata('out_roll_id');
-    if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+    $eco_user_id = $this->session->userdata('eco_user_id');
+    $eco_company_id = $this->session->userdata('eco_company_id');
+    $eco_roll_id = $this->session->userdata('eco_roll_id');
+    if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
     $this->User_Model->delete_info('tax_id', $tax_id, 'tax');
     $this->session->set_flashdata('delete_success','success');
     header('location:'.base_url().'Master/tax_slab_list');
@@ -373,10 +373,10 @@ class Master extends CI_Controller{
 
     // Delete Unit....
     public function delete_unit($unit_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('unit_id', $unit_id, 'unit');
       $this->session->set_flashdata('delete_success','success');
       header('location:'.base_url().'Master/unit_list');
@@ -460,10 +460,10 @@ class Master extends CI_Controller{
 
     // Delete Shipping....
     public function delete_shipping($shipping_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('shipping_id', $shipping_id, 'shipping');
       $this->session->set_flashdata('delete_success','success');
       header('location:'.base_url().'Master/shipping_list');
@@ -547,10 +547,10 @@ class Master extends CI_Controller{
 
   // Delete customer_level....
     public function delete_customer_level($customer_level_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->User_Model->delete_info('customer_level_id', $customer_level_id, 'customer_level');
       $this->session->set_flashdata('delete_success','success');
       header('location:'.base_url().'Master/customer_level_list');
@@ -634,10 +634,10 @@ class Master extends CI_Controller{
 
     // Delete Membership Scheme....
       public function delete_membership_scheme($mem_sch_id){
-        $out_user_id = $this->session->userdata('out_user_id');
-        $out_company_id = $this->session->userdata('out_company_id');
-        $out_roll_id = $this->session->userdata('out_roll_id');
-        if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+        $eco_user_id = $this->session->userdata('eco_user_id');
+        $eco_company_id = $this->session->userdata('eco_company_id');
+        $eco_roll_id = $this->session->userdata('eco_roll_id');
+        if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
         $this->User_Model->delete_info('mem_sch_id', $mem_sch_id, 'membership_scheme');
         $this->session->set_flashdata('delete_success','success');
         header('location:'.base_url().'Master/membership_scheme_list');
@@ -711,9 +711,9 @@ class Master extends CI_Controller{
 
     // Edit Manufacturer...
     public function edit_manufacturer($manufacturer_id){
-      $eco_user_id = $this->session->userdata('out_user_id');
-      $eco_company_id = $this->session->userdata('out_company_id');
-      $eco_roll_id = $this->session->userdata('out_roll_id');
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
       if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $this->form_validation->set_rules('manufacturer_name', 'Name', 'trim|required');
       if ($this->form_validation->run() != FALSE) {
@@ -770,10 +770,10 @@ class Master extends CI_Controller{
 
     // Delete Manufacturer....
     public function delete_manufacturer($manufacturer_id){
-      $out_user_id = $this->session->userdata('out_user_id');
-      $out_company_id = $this->session->userdata('out_company_id');
-      $out_roll_id = $this->session->userdata('out_roll_id');
-      if($out_user_id == '' && $out_company_id == ''){ header('location:'.base_url().'User'); }
+      $eco_user_id = $this->session->userdata('eco_user_id');
+      $eco_company_id = $this->session->userdata('eco_company_id');
+      $eco_roll_id = $this->session->userdata('eco_roll_id');
+      if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
       $manufacturer_info = $this->User_Model->get_info_arr_fields('manufacturer_img','manufacturer_id', $manufacturer_id, 'manufacturer');
       $this->User_Model->delete_info('manufacturer_id', $manufacturer_id, 'manufacturer');
       if($manufacturer_info){ unlink("assets/images/manufacturer/".$manufacturer_info[0]['manufacturer_img']); }
