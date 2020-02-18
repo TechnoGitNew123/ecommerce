@@ -1,0 +1,125 @@
+body{
+  padding: 0px;
+  margin: 0px;
+}
+
+.top-navbar{
+  background-color: #fff;
+}
+.bg-blue{
+  background-color: #0f4075!important;
+  color: #000!important;
+}
+
+.nav-link{
+  font-size: 18px;
+}
+
+
+.fast-img{
+  padding:30px;
+}
+
+.middle-page  .menu-btn{
+  width: 100%;
+  padding: 15px 12px;
+  background-color: #b5dbff!important;
+  border-color: #b5dbff!important;
+  color: #000;
+  font-weight: bold;
+}
+
+.navbar-brand img{
+  width: 150px;
+  height: auto;
+}
+
+.product-section{
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+.product-section h3{
+  padding-bottom: 20px;
+}
+
+
+.product-cart .card-img-top{
+  width: 160px;
+  height: 180px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-cart .card-title{
+font-size: 14px;
+text-align: center;
+}
+
+.card-text{
+  margin-bottom: 3px!important;
+}
+
+.f-14{
+  font-size: 14px!important;
+}
+
+.f-12{
+  font-size: 12px!important;
+}
+
+.line-throw{
+  text-decoration: line-through;
+}
+
+a{
+  text-decoration: none!important;
+}
+
+.discount{
+  box-shadow: 1px 1px 2px 2px #ccc;
+  margin: 8px;
+}
+
+.discount p{
+text-align: right;
+padding-right: 20px;
+}
+
+.discount-small{
+  width: 20px;
+  height: 20px;
+}
+
+.card-body{
+  padding-left: 5px!important;
+  padding-right: 5px!important;
+}
+.footer-card{
+  background-color: #f4f3f2;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.frouts{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.bottom-slider{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+footer{
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+}
+
+footer h6{
+  text-align: left;
+  padding-bottom: 12px;
+  color: #6cd138;;
+}
