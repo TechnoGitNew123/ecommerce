@@ -26,35 +26,37 @@
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
-            <!-- general form elements -->
-            <!-- <div class="card"> -->
-            <!-- /.card-header -->
             <div class="card-body p-0">
               <table id="example1" class="table table-bordered tbl_list">
                 <thead>
                 <tr>
-                  <th class="wt_50">Sr. No.</th>
+                  <th class="wt_50">#</th>
                   <th>Product Name</th>
                   <th>Added/ Modified Date</th>
                   <th>Status</th>
-                  <th>Action</th>
+                  <th class="wt_100">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <!-- <?php $i = 0;
-                  foreach ($user_list as $list) {
+                  <?php $i = 0;
+                  foreach ($product_list as $list) {
                     $i++; ?>
                   <tr>
                     <td><?php echo $i; ?></td>
-                    <td><?php echo $list->user_name ?></td>
-                    <td><?php echo $list->user_city ?></td>
-                    <td><?php echo $list->user_mobile ?></td>
-                    <td><?php echo $list->user_email ?></td>
-                    <td>
-                      <a href="<?php echo base_url(); ?>User/edit_user/<?php echo $list->user_id; ?>"> <i class="fa fa-edit"></i> </a>
-                      <a href="<?php echo base_url(); ?>User/delete_user/<?php echo $list->user_id; ?>" onclick="return confirm('Delete this User');" class="ml-4"> <i class="fa fa-trash"></i> </a>
+                    <td><?php echo $list->product_name ?></td>
+                    <td><?php echo $list->product_date ?></td>
+                    <td><?php if($list->product_status == 1){
+                      echo "<span class='text-success'>Active</span>";
+                    } else{
+                      echo "<span class='text-danger'>Inactive</span>";
+                    } ?></td>
+                    <td class="wt_150">
+                      <a href="<?php echo base_url(); ?>Product/edit_product/<?php echo $list->product_id; ?>"> <i class="fa fa-edit"></i> </a>
+                      <a href="<?php echo base_url(); ?>Product/delete_product/<?php echo $list->product_id; ?>" onclick="return confirm('Delete this User');" class="ml-3 text-danger"> <i class="fa fa-trash"></i> </a>
+                      <br> <a href="<?php echo base_url(); ?>Product/product_images/<?php echo $list->product_id; ?>" class="btn btn-sm btn-warning mt-1 w-100" href="#">Product Images</a>
+                      <br> <a href="<?php echo base_url(); ?>Product/product_attribute/<?php echo $list->product_id; ?>" class="btn btn-sm btn-info mt-1 w-100" href="#">Product Attri</a>
                     </td>
-                  <?php } ?> -->
+                  <?php } ?>
                   </tr>
                 </tbody>
               </table>

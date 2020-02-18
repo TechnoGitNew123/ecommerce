@@ -77,6 +77,22 @@
   $('#date5').datetimepicker({
     format: 'DD-MM-Y'
   })
+  //Timepicker
+  $('#timepicker1').datetimepicker({
+    format: 'LT'
+  })
+  $('#timepicker2').datetimepicker({
+    format: 'LT'
+  })
+  $('#timepicker3').datetimepicker({
+    format: 'LT'
+  })
+  $('#timepicker4').datetimepicker({
+    format: 'LT'
+  })
+  $('#timepicker5').datetimepicker({
+    format: 'LT'
+  })
 </script>
 <script>
   $(function () {

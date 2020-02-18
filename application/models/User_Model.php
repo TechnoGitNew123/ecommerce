@@ -55,6 +55,26 @@ class User_Model extends CI_Model{
     return $result;
   }
 
+  public function get_list_by_id_com($company_id,$col_name1,$col_val1,$col_name2,$col_val2,$order_col,$order,$tbl_name){
+    $this->db->select('*');
+    if($company_id != ''){
+      $this->db->where('company_id',$company_id);
+    }
+    if($col_name1 != ''){
+      $this->db->where($col_name1,$col_val1);
+    }
+    if($col_name2 != ''){
+      $this->db->where($col_name2,$col_val2);
+    }
+    if($order_col != ''){
+      $this->db->order_by($order_col, $order);
+    }
+    $this->db->from($tbl_name);
+    $query = $this->db->get();
+    $result = $query->result();
+    return $result;
+  }
+
   public function get_info($id_type, $id, $tbl_name){
     $this->db->select('*');
     $this->db->where($id_type, $id);
