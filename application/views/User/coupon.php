@@ -87,7 +87,7 @@
                       </div>
                       <div class="form-group col-md-6 select_sm">
                         <label>Products</label>
-                        <select class="select2 form-control form-control-sm" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        <select class="select2 form-control form-control-sm" name="coupon_products" id="coupon_products" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                           <?php if(isset($product_list)){ foreach ($product_list as $list) { ?>
                             <option value="<?php echo $list->product_id; ?>"><?php echo $list->product_name; ?></option>
                           <?php }} ?>
@@ -95,7 +95,7 @@
                       </div>
                       <div class="form-group col-md-6 select_sm">
                         <label>Exclude Products</label>
-                        <select class="select2 form-control form-control-sm" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        <select class="select2 form-control form-control-sm" name="coupon_excl_products" id="coupon_excl_products" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                           <option>Alabama</option>
                           <option>Alaska</option>
                           <option>California</option>
@@ -107,7 +107,7 @@
                       </div>
                       <div class="form-group col-md-6 select_sm">
                         <label>Categories</label>
-                        <select class="select2 form-control form-control-sm" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        <select class="select2 form-control form-control-sm" name="coupon_categories" id="coupon_categories" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                           <option>Alabama</option>
                           <option>Alaska</option>
                           <option>California</option>
@@ -119,7 +119,7 @@
                       </div>
                       <div class="form-group col-md-6 select_sm">
                         <label>Exclude Categories</label>
-                        <select class="select2 form-control form-control-sm" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+                        <select class="select2 form-control form-control-sm" name="coupon_excl_categories" id="coupon_excl_categories" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
                           <option>Alabama</option>
                           <option>Alaska</option>
                           <option>California</option>

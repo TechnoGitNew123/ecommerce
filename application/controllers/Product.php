@@ -447,11 +447,21 @@ class Product extends CI_Controller{
     $this->load->view('User/coupon_list');
     $this->load->view('Include/footer');
   }
+
+  // Add Coupon...
   public function coupon(){
     $eco_user_id = $this->session->userdata('eco_user_id');
     $eco_company_id = $this->session->userdata('eco_company_id');
     $eco_roll_id = $this->session->userdata('eco_roll_id');
     if($eco_user_id == '' && $eco_company_id == ''){ header('location:'.base_url().'User'); }
+
+    $this->form_validation->set_rules('coupon_code', 'Name', 'trim|required');
+    if ($this->form_validation->run() != FALSE) {
+      $manufacturer_status = $this->input->post('manufacturer_status');
+      if(!isset($manufacturer_status)){ $manufacturer_status = 0; }
+    }
+
+
 
     $data['product_list'] = $this->User_Model->get_list_by_id('product_status',1,'','','product_name','ASC','product');
     $this->load->view('Include/head', $data);

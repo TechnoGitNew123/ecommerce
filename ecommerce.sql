@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2020 at 08:09 AM
+-- Generation Time: Feb 18, 2020 at 07:34 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -101,6 +101,13 @@ CREATE TABLE `category` (
   `category_addedby` varchar(50) NOT NULL,
   `category_date` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `company_id`, `main_category_id`, `category_name`, `category_img`, `is_main`, `category_status`, `category_addedby`, `category_date`) VALUES
+(1, 1, 0, 'Demo', 'category_1_1581765834.jpg', 1, 1, '1', '15-02-2020 11:02:49 ');
 
 -- --------------------------------------------------------
 
@@ -408,6 +415,90 @@ INSERT INTO `country` (`country_id`, `sortname`, `country_name`, `phonecode`, `d
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coupon`
+--
+
+CREATE TABLE `coupon` (
+  `coupon_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `coupon_code` varchar(50) NOT NULL,
+  `coupon_disc_type` int(11) NOT NULL,
+  `coupon_desc` text NOT NULL,
+  `coupon_amt` double NOT NULL,
+  `free_shipping` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+  `coupon_exp_date` varchar(20) NOT NULL,
+  `coupon_min_spend` varchar(100) NOT NULL,
+  `coupon_max_spend` varchar(100) NOT NULL,
+  `coupon_individual_use` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+  `coupon_excl_sale_item` int(11) NOT NULL DEFAULT 0 COMMENT '0=No, 1=Yes',
+  `coupon_products` text NOT NULL,
+  `coupon_excl_products` text NOT NULL,
+  `coupon_categories` text NOT NULL,
+  `coupon_excl_categories` text NOT NULL,
+  `coupon_restr_email` text NOT NULL,
+  `limit_per_coupon` int(11) NOT NULL,
+  `limit_per_user` int(11) NOT NULL,
+  `coupon_status` int(11) NOT NULL DEFAULT 1,
+  `coupon_addedby` varchar(50) NOT NULL,
+  `coupon_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `customer_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `customer_level_id` int(11) NOT NULL,
+  `customer_fname` varchar(100) NOT NULL,
+  `customer_lname` varchar(100) NOT NULL,
+  `customer_dob` varchar(20) NOT NULL,
+  `customer_gender` varchar(20) NOT NULL,
+  `customer_mobile` varchar(20) NOT NULL,
+  `customer_email` varchar(100) NOT NULL,
+  `customer_password` varchar(100) NOT NULL,
+  `customer_status` int(11) NOT NULL DEFAULT 1,
+  `customer_addedby` varchar(50) NOT NULL,
+  `customer_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `company_id`, `customer_level_id`, `customer_fname`, `customer_lname`, `customer_dob`, `customer_gender`, `customer_mobile`, `customer_email`, `customer_password`, `customer_status`, `customer_addedby`, `customer_date`) VALUES
+(1, 1, 1, 'aaa', 'sss', '12-12-2000', 'Male', '9966558877', 'demo@www.ccc', '123456', 1, '1', '15-02-2020 11:00:27 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_level`
+--
+
+CREATE TABLE `customer_level` (
+  `customer_level_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `customer_level_name` varchar(250) NOT NULL,
+  `customer_level_price` double NOT NULL,
+  `customer_level_desc` text DEFAULT NULL,
+  `customer_level_status` int(11) DEFAULT 1,
+  `customer_level_addedby` varchar(50) NOT NULL,
+  `customer_level_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer_level`
+--
+
+INSERT INTO `customer_level` (`customer_level_id`, `company_id`, `customer_level_name`, `customer_level_price`, `customer_level_desc`, `customer_level_status`, `customer_level_addedby`, `customer_level_date`) VALUES
+(1, 1, 'aa', 33, 'dfsdf', 1, '1', '15-02-2020 09:02:07 ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manufacturer`
 --
 
@@ -432,6 +523,30 @@ INSERT INTO `manufacturer` (`manufacturer_id`, `company_id`, `manufacturer_name`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `membership_scheme`
+--
+
+CREATE TABLE `membership_scheme` (
+  `mem_sch_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `mem_sch_name` varchar(250) DEFAULT NULL,
+  `mem_sch_amt` double DEFAULT NULL,
+  `mem_sch_valid` varchar(100) DEFAULT NULL,
+  `mem_sch_status` int(11) NOT NULL DEFAULT 1,
+  `mem_sch_addedby` varchar(50) DEFAULT NULL,
+  `mem_sch_date` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `membership_scheme`
+--
+
+INSERT INTO `membership_scheme` (`mem_sch_id`, `company_id`, `mem_sch_name`, `mem_sch_amt`, `mem_sch_valid`, `mem_sch_status`, `mem_sch_addedby`, `mem_sch_date`) VALUES
+(2, 1, 'sdfsdf', 2345, 'Monthly', 1, '1', '15-02-2020 11:02:17 ');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `product`
 --
 
@@ -439,7 +554,32 @@ CREATE TABLE `product` (
   `product_id` int(11) NOT NULL,
   `company_id` int(11) NOT NULL,
   `product_name` varchar(250) DEFAULT NULL,
+  `product_type` varchar(100) DEFAULT NULL,
+  `manufacturer_id` int(11) DEFAULT NULL,
+  `main_category_id` varchar(100) DEFAULT NULL,
+  `category_id` varchar(100) DEFAULT NULL,
+  `is_feature` int(11) NOT NULL DEFAULT 0,
+  `product_price` double DEFAULT NULL,
+  `tax_rate` double DEFAULT NULL,
+  `min_ord_limit` double DEFAULT NULL,
+  `max_ord_limit` double DEFAULT NULL,
+  `product_weight` double DEFAULT NULL,
+  `product_model` varchar(250) DEFAULT NULL,
+  `product_img` varchar(150) DEFAULT NULL,
+  `flash_sale` varchar(50) DEFAULT NULL,
+  `flash_sale_price` double DEFAULT NULL,
+  `flash_sale_start_date` varchar(20) DEFAULT NULL,
+  `flash_sale_start_time` varchar(20) DEFAULT NULL,
+  `flash_sale_end_date` varchar(20) DEFAULT NULL,
+  `flash_sale_end_time` varchar(20) DEFAULT NULL,
+  `flash_sale_status` int(11) NOT NULL DEFAULT 0,
+  `pro_special` varchar(50) NOT NULL DEFAULT 'No',
+  `pro_special_price` double DEFAULT NULL,
+  `pro_special_exp_date` varchar(20) NOT NULL,
+  `pro_special_status` int(11) NOT NULL DEFAULT 1,
+  `product_details` text DEFAULT NULL,
   `product_status` int(11) NOT NULL DEFAULT 1,
+  `product_addedby` varchar(50) DEFAULT NULL,
   `product_date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -447,9 +587,81 @@ CREATE TABLE `product` (
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`product_id`, `company_id`, `product_name`, `product_status`, `product_date`) VALUES
-(1, 1, 'ZZZ', 1, NULL),
-(2, 1, 'CCC', 1, NULL);
+INSERT INTO `product` (`product_id`, `company_id`, `product_name`, `product_type`, `manufacturer_id`, `main_category_id`, `category_id`, `is_feature`, `product_price`, `tax_rate`, `min_ord_limit`, `max_ord_limit`, `product_weight`, `product_model`, `product_img`, `flash_sale`, `flash_sale_price`, `flash_sale_start_date`, `flash_sale_start_time`, `flash_sale_end_date`, `flash_sale_end_time`, `flash_sale_status`, `pro_special`, `pro_special_price`, `pro_special_exp_date`, `pro_special_status`, `product_details`, `product_status`, `product_addedby`, `product_date`) VALUES
+(1, 1, 'demo', 'Simple', 1, '1', '', 1, 10000, 0, 1, 111, 222, '333', 'product_main_1_1581839352.jpg', 'Yes', 0, '', '1:11 PM', '29-01-2020', '', 0, 'No', 0, '', 0, '                   demo details                   ', 1, '1', '16-02-2020 03:55:18 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_attribute`
+--
+
+CREATE TABLE `product_attribute` (
+  `product_attribute_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `attribute_id` int(11) NOT NULL,
+  `attribute_val_id` int(11) NOT NULL,
+  `attribute_price_type` int(11) DEFAULT NULL,
+  `attribute_price` double NOT NULL,
+  `product_attribute_status` int(11) NOT NULL DEFAULT 1,
+  `product_attribute_addedby` varchar(50) NOT NULL,
+  `product_attribute_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_attribute`
+--
+
+INSERT INTO `product_attribute` (`product_attribute_id`, `company_id`, `product_id`, `attribute_id`, `attribute_val_id`, `attribute_price_type`, `attribute_price`, `product_attribute_status`, `product_attribute_addedby`, `product_attribute_date`) VALUES
+(1, 1, 1, 2, 10, 2, 200, 0, '1', '18-02-2020 10:09:31A'),
+(2, 1, 1, 2, 10, 1, 111, 1, '1', '16-02-2020 05:49:41P'),
+(3, 1, 1, 2, 8, 1, 11, 1, '1', '18-02-2020 10:23:16A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_images`
+--
+
+CREATE TABLE `product_images` (
+  `product_images_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `product_images_name` varchar(150) DEFAULT NULL,
+  `product_images_addedby` varchar(50) DEFAULT NULL,
+  `product_images_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `product_images`
+--
+
+INSERT INTO `product_images` (`product_images_id`, `product_id`, `product_images_name`, `product_images_addedby`, `product_images_date`) VALUES
+(4, 1, 'product_sub_1_1_1581847729.jpg', '1', '16-02-2020 03:38:49 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shipping`
+--
+
+CREATE TABLE `shipping` (
+  `shipping_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `shipping_name` varchar(250) NOT NULL,
+  `shipping_price` double NOT NULL,
+  `shipping_desc` text DEFAULT NULL,
+  `shipping_status` int(11) DEFAULT 1,
+  `shipping_addedby` varchar(50) NOT NULL,
+  `shipping_date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shipping`
+--
+
+INSERT INTO `shipping` (`shipping_id`, `company_id`, `shipping_name`, `shipping_price`, `shipping_desc`, `shipping_status`, `shipping_addedby`, `shipping_date`) VALUES
+(2, 1, 'fvsdfsdf', 22, 'sdfsadf', 1, '1', '15-02-2020 09:02:00 ');
 
 -- --------------------------------------------------------
 
@@ -2663,10 +2875,40 @@ CREATE TABLE `tax` (
   `company_id` int(11) NOT NULL,
   `tax_title` varchar(250) DEFAULT NULL,
   `tax_rate` double DEFAULT NULL,
+  `tax_desc` text DEFAULT NULL,
   `tax_status` int(11) NOT NULL DEFAULT 1,
   `tax_addedby` varchar(50) DEFAULT NULL,
   `tax_date` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tax`
+--
+
+INSERT INTO `tax` (`tax_id`, `company_id`, `tax_title`, `tax_rate`, `tax_desc`, `tax_status`, `tax_addedby`, `tax_date`) VALUES
+(1, 1, 'GST 0%', 0, '0% GST', 1, '1', '16-02-2020 06:02:22 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `unit`
+--
+
+CREATE TABLE `unit` (
+  `unit_id` int(11) NOT NULL,
+  `company_id` int(11) NOT NULL,
+  `unit_name` varchar(250) DEFAULT NULL,
+  `unit_status` int(11) NOT NULL DEFAULT 1,
+  `unit_addedby` varchar(50) DEFAULT NULL,
+  `unit_date` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `unit`
+--
+
+INSERT INTO `unit` (`unit_id`, `company_id`, `unit_name`, `unit_status`, `unit_addedby`, `unit_date`) VALUES
+(1, 1, 'KG', 1, '1', '15-02-2020 09:02:40 ');
 
 -- --------------------------------------------------------
 
@@ -2741,16 +2983,58 @@ ALTER TABLE `country`
   ADD PRIMARY KEY (`country_id`);
 
 --
+-- Indexes for table `coupon`
+--
+ALTER TABLE `coupon`
+  ADD PRIMARY KEY (`coupon_id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `customer_level`
+--
+ALTER TABLE `customer_level`
+  ADD PRIMARY KEY (`customer_level_id`);
+
+--
 -- Indexes for table `manufacturer`
 --
 ALTER TABLE `manufacturer`
   ADD PRIMARY KEY (`manufacturer_id`);
 
 --
+-- Indexes for table `membership_scheme`
+--
+ALTER TABLE `membership_scheme`
+  ADD PRIMARY KEY (`mem_sch_id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `product_attribute`
+--
+ALTER TABLE `product_attribute`
+  ADD PRIMARY KEY (`product_attribute_id`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`product_images_id`);
+
+--
+-- Indexes for table `shipping`
+--
+ALTER TABLE `shipping`
+  ADD PRIMARY KEY (`shipping_id`);
 
 --
 -- Indexes for table `state`
@@ -2763,6 +3047,12 @@ ALTER TABLE `state`
 --
 ALTER TABLE `tax`
   ADD PRIMARY KEY (`tax_id`);
+
+--
+-- Indexes for table `unit`
+--
+ALTER TABLE `unit`
+  ADD PRIMARY KEY (`unit_id`);
 
 --
 -- Indexes for table `user`
@@ -2796,7 +3086,7 @@ ALTER TABLE `attribute_val`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `company`
@@ -2811,16 +3101,58 @@ ALTER TABLE `country`
   MODIFY `country_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
+-- AUTO_INCREMENT for table `coupon`
+--
+ALTER TABLE `coupon`
+  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `customer_level`
+--
+ALTER TABLE `customer_level`
+  MODIFY `customer_level_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `manufacturer`
 --
 ALTER TABLE `manufacturer`
   MODIFY `manufacturer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `membership_scheme`
+--
+ALTER TABLE `membership_scheme`
+  MODIFY `mem_sch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `product_attribute`
+--
+ALTER TABLE `product_attribute`
+  MODIFY `product_attribute_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `product_images_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `shipping`
+--
+ALTER TABLE `shipping`
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `state`
@@ -2832,7 +3164,13 @@ ALTER TABLE `state`
 -- AUTO_INCREMENT for table `tax`
 --
 ALTER TABLE `tax`
-  MODIFY `tax_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tax_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `unit`
+--
+ALTER TABLE `unit`
+  MODIFY `unit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
