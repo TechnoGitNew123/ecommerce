@@ -7,101 +7,113 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" >
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/website.css">
-    <title>Out Book </title>
+    <title>Kirana Bhara Club</title>
   </head>
   <body>
 
-    <section class="top-navbar">
-      <div class="container">
+    <section class="top-head">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 text-left">
+            <img class="top-img" src="<?php echo base_url(); ?>assets/images/bigbasket-logo.png" alt="">
+          </div>
+           <div class="col-md-6 text-right">
+            <img class="top-img" src="<?php echo base_url(); ?>assets/images/apple.png" alt="">
+          </div>
+        </div>
+        <div class="row  p-t-15">
+          <div class="col-md-9">
+            <h1 class="text-center">Kirana Bhara </h1>
+          </div>
+          <div class="col-md-2">
+          <button type="button" class="btn btn-small btn-outline-secondary">Change Language</button>
+          <button type="button" class="btn btn-small btn-outline-secondary">Change Location</button>
+          </div>
+          <div class="col-md-1">
+          <i class="fas shop  fa-shopping-cart"></i>
+          </div>
+        </div>
 
+        <div class="row div-text-h" >
+          <div class="col-md-1 pt-8">
+            <p class="text-small">Free Delivery On Order Above 999/-</p>
+          </div>
+          <div class="col-md-2 pt-8 bl">
+          <p class="text-small">Delivery Within the Radius Of 60 km From Kolhapur</p>
+          </div>
+          <div class="col-md-1 pt-8 bl">
+            <p class="text-small">Delivery Within 24 Hrs</p>
+          </div>
+          <div class="col-md-3 pt-8 bl">
 
-  <nav class="navbar navbar-expand-lg bg-light ">
-  <a class="navbar-brand" href="#"> <img src="<?php echo base_url(); ?>assets/images/bigbasket-logo.png" alt=""> </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link " href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Demo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Downloads</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#">Contact Us</a>
-      </li>
+          </div>
 
-    </ul>
-  </div>
-</nav>
-  </div>
+          <div class="col-md-2 pt-8 bl">
+            <p class="text-small">Customer support </p>
+            <p class="text-small">9588617281</p>
+            <p class="text-small">9am To 7pm</p>
+          </div>
+          <div class="col-md-3 pt-8 bl text-center">
+            <!-- <p class="text-small">Customer Login / Signup</p> -->
+            <button type="button" class="btn btn-small btn-outline-success">Customer Login / Signup</button>
+            <button type="button" class="btn btn-small btn-outline-danger">Employee Login / Signup</button>
+            <button type="button" class="btn btn-small btn-outline-secondary">Retailer Login / Signup</button>
+            <button type="button" class="btn btn-small btn-outline-info">Vendor Login / Signup</button>
+          </div>
+        </div>
+
+        <div class="row pb-2">
+            <div class="col-md-8">
+              <p class="text-center" > <button type="button" class="btn btn-outline-success">Search By Product / Brand / Price</button>   </p>
+            </div>
+
+            <div class="col-md-4">
+              <p class="text-center"> <button type="button" class="btn btn-outline-info">Upload Order From Here</button>  </p>
+            </div>
+        </div>
+      </div>
     </section>
 
+    <section class="image-div" >
+ <div class="container-fluid">
+   <div class="row">
+     <div class="col-md-3">
+       <img class="middle-img" src="<?php echo base_url(); ?>assets/images/frouts.jpg" alt="" width="100%">
+     </div>
 
-    <section class="slider">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/images/slider/banner1.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/images/slider/banner2.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/images/slider/banner3.jpg" alt="Third slide">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+     <div class="col-md-3">
+       <img class="middle-img" src="<?php echo base_url(); ?>assets/images/frouts.jpg" alt="" width="100%">
+     </div>
+
+     <div class="col-md-6 ">
+       <img class="middle-img" src="<?php echo base_url(); ?>assets/images/kb_big.png" alt="" width="100%">
+     </div>
+   </div>
+ </div>
     </section>
+
 
     <section class="middle-page">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <img class="fast-img" src="<?php echo base_url(); ?>assets/images/slider/bottm_banner.jpg"  width="100%" alt="">
+            <!-- <img class="fast-img" src="<?php echo base_url(); ?>assets/images/slider/bottm_banner.jpg"  width="100%" alt=""> -->
           </div>
           <div class="row btn-div w-100">
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">Eggs Meat & Fish</button>
+            <div class="col-md-3">
+            <button class="btn menu-btn btn-primary" type="submit">KB Health Tips</button>
             </div>
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">Home & Kitchen</button>
+            <div class="col-md-3">
+            <button class="btn menu-btn btn-primary" type="submit">Discont Upto 70 % </button>
             </div>
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">GoodDiet</button>
+            <div class="col-md-3">
+            <button class="btn menu-btn btn-primary" type="submit">Earn gold Coin</button>
             </div>
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">Beauty Store</button>
-            </div>
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">BB Star </button>
-            </div>
-            <div class="col-md-2">
-            <button class="btn menu-btn btn-primary" type="submit">Deals Of week</button>
+            <div class="col-md-3">
+            <button class="btn menu-btn btn-primary" type="submit">Shop By Brand</button>
             </div>
           </div>
         </div>
@@ -110,294 +122,142 @@
 
     <section class="product-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h3 class="text-center ">My Smart Basket</h3>
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/atta.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
           </div>
-        <div class="col-md-3">
-          <div class="product-cart">
-            <div class="card" style="width: 100%;">
-              <div class="discount">
-                <p class="f-12 text-danger mb-0"> 20% Off  <img class="discount-small" src="<?php echo base_url(); ?>assets/images/discount.png" alt=""> </p>
-              </div>
-                <img class="card-img-top" src="<?php echo base_url(); ?>assets/images/product/basamati.jpg" alt="Card image cap">
-                <div class="card-body">
-                <a href="#">  <h5 class="card-title text-center">Basmati Rice - Feast Rozzana</h5></a>
-                <div class="form-group w-100 select_xsm">
-                  <select class="form-control select2 " name="main_category_id" id="main_category_id" data-placeholder="Select Main Category">
-                    <option value="">5 Kg pouch - Rs. 385.10 </option>
-                    <option value="-1">1 Kg pouch - Rs. 85.10</option>
-                  </select>
-                </div>
-                <div class="footer-card">
-                  <p class="card-text "><span class="f-12 "> MRP:Rs <span class="line-throw">485</span>  </span> <span class="f-14">Rs 344.85</span> </p>
-                  <p class="card-text f-14">Express Delivery: Today 2:30PM - 4:30PM</p>
-                </div>
-                </div>
-              </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/rice.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/dal.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/masala.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="product-cart">
-            <div class="card" style="width: 100%;">
-              <div class="discount">
-                <p class="f-12 text-danger mb-0"> 20% Off  <img class="discount-small" src="<?php echo base_url(); ?>assets/images/discount.png" alt=""> </p>
-              </div>
-                <img class="card-img-top" src="<?php echo base_url(); ?>assets/images/product/tomato.jpg" alt="Card image cap">
-                <div class="card-body">
-                <a href="#">  <h5 class="card-title text-center">Basmati Rice - Feast Rozzana</h5></a>
-                <div class="form-group w-100 select_xsm">
-                  <select class="form-control select2 " name="main_category_id" id="main_category_id" data-placeholder="Select Main Category">
-                    <option value="">5 Kg pouch - Rs. 385.10 </option>
-                    <option value="-1">1 Kg pouch - Rs. 85.10</option>
-                  </select>
-                </div>
-                <div class="footer-card">
-                  <p class="card-text "><span class="f-12 "> MRP:Rs <span class="line-throw">485</span>  </span> <span class="f-14">Rs 344.85</span> </p>
-                  <p class="card-text f-14">Express Delivery: Today 2:30PM - 4:30PM</p>
-                </div>
-                </div>
-              </div>
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/atta.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/rice.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/dal.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/masala.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="product-cart">
-            <div class="card" style="width: 100%;">
-              <div class="discount">
-                <p class="f-12 text-danger mb-0"> 20% Off  <img class="discount-small" src="<?php echo base_url(); ?>assets/images/discount.png" alt=""> </p>
-              </div>
-                <img class="card-img-top" src="<?php echo base_url(); ?>assets/images/product/capsicum.jpg" alt="Card image cap">
-                <div class="card-body">
-                <a href="#">  <h5 class="card-title text-center">Basmati Rice - Feast Rozzana</h5></a>
-                <div class="form-group w-100 select_xsm">
-                  <select class="form-control select2 " name="main_category_id" id="main_category_id" data-placeholder="Select Main Category">
-                    <option value="">5 Kg pouch - Rs. 385.10 </option>
-                    <option value="-1">1 Kg pouch - Rs. 85.10</option>
-                  </select>
-                </div>
-                <div class="footer-card">
-                  <p class="card-text "><span class="f-12 "> MRP:Rs <span class="line-throw">485</span>  </span> <span class="f-14">Rs 344.85</span> </p>
-                  <p class="card-text f-14">Express Delivery: Today 2:30PM - 4:30PM</p>
-                </div>
-                </div>
-              </div>
+
+        <div class="row mb-5">
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/atta.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/rice.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/dal.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/masala.jpg" alt="" width="100%" >
+            <div class="text-head w-100">
+              <p class="text-center">Grains / Pulses</p>
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="product-cart">
-            <div class="card" style="width: 100%;">
-              <div class="discount">
-                <p class="f-12 text-danger mb-0"> 20% Off  <img class="discount-small" src="<?php echo base_url(); ?>assets/images/discount.png" alt=""> </p>
-              </div>
-                <img class="card-img-top" src="<?php echo base_url(); ?>assets/images/product/potato.jpg" alt="Card image cap">
-                <div class="card-body">
-                <a href="#">  <h5 class="card-title text-center">Basmati Rice - Feast Rozzana</h5></a>
-                <div class="form-group w-100 select_xsm">
-                  <select class="form-control select2 " name="main_category_id" id="main_category_id" data-placeholder="Select Main Category">
-                    <option value="">5 Kg pouch - Rs. 385.10 </option>
-                    <option value="-1">1 Kg pouch - Rs. 85.10</option>
-                  </select>
-                </div>
-                <div class="footer-card">
-                  <p class="card-text "><span class="f-12 "> MRP:Rs <span class="line-throw">485</span>  </span> <span class="f-14">Rs 344.85</span> </p>
-                  <p class="card-text f-14">Express Delivery: Today 2:30PM - 4:30PM</p>
-                </div>
-                    </div>
-              </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section class="frouts">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-              <h3 class="text-center">Fruits & Vegetables</h3>
-        </div>
 
-        <div class="col-md-6">
-          <img class="big-img" src="<?php echo base_url(); ?>assets/images/frouts.jpg" alt="" width="100%">
-        </div>
-        <div class="col-md-6 mb-5">
-          <div class="row">
-            <div class="col-md-6">
-              <img class="small-img mb-3" src="<?php echo base_url(); ?>assets/images/frouts2.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img" src="<?php echo base_url(); ?>assets/images/frouts3.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img mb-3" src="<?php echo base_url(); ?>assets/images/frouts2.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img" src="<?php echo base_url(); ?>assets/images/frouts3.jpg" alt="" width="100%" >
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row mb-5">
-        <div class="col-md-12 mb-3">
-              <h3 class="text-center">Fruits & Vegetables</h3>
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/atta.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/rice.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/dal.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/masala.jpg" alt="" width="100%" >
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12 mb-3">
-              <h3 class="text-center">Cleaning and Household</h3>
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/tide.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/ezzey.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/garbage.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-3">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/clener.jpg" alt="" width="100%" >
-        </div>
-      </div>
 
-      <div class="row mt-5">
-        <div class="col-md-12">
-              <h3 class="text-center">Fruits & Vegetables</h3>
-        </div>
-        <div class="col-md-6">
-          <img class="big-img" src="<?php echo base_url(); ?>assets/images/frouts.jpg" alt="" width="100%">
-        </div>
-        <div class="col-md-6 mb-5">
-          <div class="row">
-            <div class="col-md-6">
-              <img class="small-img mb-3" src="<?php echo base_url(); ?>assets/images/frouts2.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img" src="<?php echo base_url(); ?>assets/images/frouts3.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img mb-3" src="<?php echo base_url(); ?>assets/images/frouts2.jpg" alt="" width="100%" >
-            </div>
-            <div class="col-md-6">
-              <img class="small-img" src="<?php echo base_url(); ?>assets/images/frouts3.jpg" alt="" width="100%" >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12 mb-3">
-              <h3 class="text-center">Brand Store</h3>
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/patanjali.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/durex.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/parle.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/cola.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/parle.jpg" alt="" width="100%" >
-        </div>
-        <div class="col-md-2">
-          <img class="small-img" src="<?php echo base_url(); ?>assets/images/product/cola.jpg" alt="" width="100%" >
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bottom-slider">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="text-center pb-4">Featured Recipes</h3>
-        </div>
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/images/product/chocolate.jpg" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="<?php echo base_url(); ?>assets/images/product/award.jpg" alt="Second slide">
-    </div>
-
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-3">
-          <h6>Grocery</h6>
           <ul>
-            <li>About Us</li>
-            <li>Terms and Conditions</li>
-            <li>Careers At bigbasket</li>
-            <li>Privacy Policy</li>
+            <li>Who We are </li>
+            <li>Our System</li>
+            <li>How To Place Order</li>
+
           </ul>
         </div>
 
         <div class="col-md-3">
-          <h6>Help</h6>
+
           <ul>
-            <li>FAQs</li>
-            <li>Contact Us</li>
-            <li>Vendor Connect</li>
-            <li>Terms</li>
+            <li>Privacy Policy</li>
+            <li>Return & Exchange Policy </li>
+            <li>Terms & Condition</li>
           </ul>
         </div>
 
         <div class="col-md-3">
-            <h6>Download Our App</h6>
-            <img class="pb-3" src="<?php echo base_url(); ?>assets/images/product/play.png" alt="" width="50%">
-            <br>
-              <img src="<?php echo base_url(); ?>assets/images/product/apple.png" alt="" width="50%">
-        </div>
+          <ul>
+            <li>Offers / Discounts / Coupon</li>
+            <li>Payment & Delivery </li>
+            <li>Cancellation Policy</li>
+          </ul>
+              </div>
 
         <div class="col-md-3">
-          <h6>Get Social With Us</h6>
           <ul>
-            <li>About Us</li>
-            <li>Terms and Conditions</li>
-            <li>Careers At bigbasket</li>
-            <li>Privacy Policy</li>
+            <li>Our Team</li>
+            <li>Gallery</li>
+            <li>Contact us</li>
           </ul>
         </div>
       </div>
     </div>
   </footer>
 
-
+  <section class="bottom-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p> <span class="pr-3 facebook ">Follow Us On :</span>  <i class="fab  fa-facebook-f facebook"></i>  &nbsp; <i class="fab twitter fa-twitter"></i> &nbsp; <i class="fab  linkedin fa-linkedin-in"></i> &nbsp; <i class="fab instagram fa-instagram"></i>  </p>
+        </div>
+      </div>
+    </div>
+    </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

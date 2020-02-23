@@ -2,7 +2,9 @@ body{
   padding: 0px;
   margin: 0px;
 }
-
+h1 , h4 {
+  font-family: 'Roboto', ;
+}
 .top-navbar{
   background-color: #fff;
 }
@@ -10,6 +12,15 @@ body{
   background-color: #0f4075!important;
   color: #000!important;
 }
+
+.top-head{
+  padding-top: 10px;
+}
+
+.top-head p{
+  margin-bottom: 5px;
+}
+
 
 .nav-link{
   font-size: 18px;
@@ -34,6 +45,11 @@ body{
   height: auto;
 }
 
+.top-img{
+  width: 150px;
+  height: auto;
+}
+
 .product-section{
   padding-top: 50px;
   padding-bottom: 30px;
@@ -41,6 +57,11 @@ body{
 
 .product-section h3{
   padding-bottom: 20px;
+}
+
+.product-section .text-head{
+  background-color: #f4f4f4;
+  color: #000;
 }
 
 
@@ -115,11 +136,99 @@ padding-right: 20px;
 footer{
   padding-top: 30px;
   padding-bottom: 30px;
-
+ background-color: #d6d6d6;
 }
 
 footer h6{
   text-align: left;
   padding-bottom: 12px;
   color: #6cd138;;
+}
+
+.p-30{
+  padding: 30px 20px!important;
+}
+
+
+.bottom-footer{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #b3b3b3;
+  text-align: center;
+}
+
+.bottom-footer p{
+  margin-bottom: 0px;
+}
+
+.p-tb-15{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.p-t-15{
+  padding-top: 15px;
+}
+
+.div-text-h .text-small{
+
+  font-size: 14px;
+  font-family: 'Roboto', ;
+  text-align: center;
+}
+
+.pt-8{
+  padding-top: 8px;
+}
+
+.div-text-h{
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  margin-bottom: 20px;
+  margin-top: 15px;
+  padding: 0px 15px;
+
+}
+
+.div-text-h .bl{
+ border-left: 1px solid #000;
+}
+
+.image-div{
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.middle-img{
+  width: 100%;
+  height: 300px;
+}
+
+.btn-small{
+  padding: 0.5px 5px!important;
+  margin-bottom: 8px;
+}
+
+.shop{
+  width: 90px;
+  height: 90px;
+  color: #000;
+}
+
+/**********************    Grocery List   *************************/
+
+.gorcery-list{
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: #f4f4f4;
+}
+
+.gorcery-list .right-card{
+  padding: 30px 15px;
+}
+
+.gorcery-list  .heading{
+  font-size: 2.5rem;
+  padding-top: 20px;
+  padding-bottom: 25px;
 }
